@@ -67,17 +67,25 @@
     <ol>
       {#each props.tracks as track}
         <li>
-          <a href={track.url} target="_blank">{track.name}</a>
-          <ArtistSVG />
-          {#each track.artists as artist, i}
-            {#if i === track.artists.length - 1}
-              {artist}
-            {:else}
-              {artist}, &nbsp;
-            {/if}
-          {/each}
-          <AlbumSVG />
-          {track.album}
+          <div class="track-item">
+            <a class="track-name" href={track.url} target="_blank"
+              >{track.name}</a
+            >
+          </div>
+          <div class="artist-block track-item">
+            <ArtistSVG />
+            {#each track.artists as artist, i}
+              {#if i === track.artists.length - 1}
+                {artist}
+              {:else}
+                {artist}, &nbsp;
+              {/if}
+            {/each}
+          </div>
+          <div class="album-block track-item">
+            <AlbumSVG />
+            {track.album}
+          </div>
         </li>
       {/each}
     </ol>
@@ -153,12 +161,55 @@
   }
 
   ol {
+    display: grid;
+    grid-template-columns: repeat(var(--track-cols), minmax(250px, 1fr));
+    row-gap: clamp(1.5rem, 8vw, 5rem);
     padding-left: 1.5em;
     font-size: clamp(1rem, 4vw, 1.4rem);
   }
 
-  li + li {
-    margin-top: 1.5rem;
+  /* next four media queries responsively change the # of columns that display tracks when a playlist is opened */
+  @media (max-width: 800px) {
+    :root {
+      --track-cols: 1;
+    }
+  }
+
+  @media (800px <= width <= 1300px) {
+    :root {
+      --track-cols: 2;
+    }
+  }
+
+  @media (1300px <= width <= 1750px) {
+    :root {
+      --track-cols: 3;
+    }
+  }
+
+  @media (min-width: 1750px) {
+    :root {
+      --track-cols: 5;
+    }
+  }
+
+  /* provides a little spacing between tracks on mobile */
+  @media (max-width: 800px) {
+    li + li {
+      margin-top: 1.5rem;
+    }
+  }
+
+  .track-item {
+    max-width: 90%;
+  }
+
+  .track-item + .track-item {
+    margin-top: 0.8rem;
+  }
+
+  a.track-name {
+    padding-left: 0.25em;
   }
 
   details {

@@ -42,6 +42,7 @@
       --accent: #a095ff;
       --page-border: #a095ff7e;
       --cols: auto-fit;
+      --track-cols: auto-fit;
     }
 
     *,
@@ -154,9 +155,16 @@
       grid-template-columns: repeat(var(--cols), minmax(250px, 1fr));
     }
 
+    /* these media queries responsively change the # of playlists that are displayed in the grid */
     @media (565px <= width <= 800px) {
       :root {
         --cols: 1;
+      }
+    }
+
+    @media (800px <= width <= 1300px) {
+      :root {
+        --cols: 2;
       }
     }
 
