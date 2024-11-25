@@ -1,0 +1,113 @@
+<script lang="ts">
+  import { routeEntries } from "$lib/routes";
+  import { invalidate } from "$app/navigation";
+  import ButtonArrowSVG from "$lib/svg/ButtonArrowSVG.svelte";
+  const props = $props();
+
+  let currentRoute = routeEntries.find(
+    (entry) => entry.range === props.rangeLabel
+  ) || {
+    lastPageRoute: null,
+    nextPageRoute: null,
+  };
+
+  function navigateAndRefresh(href: string) {
+    invalidate(href);
+    // Ensure the href is treated as an absolute path
+    window.location.href = new URL(href, window.location.origin).toString();
+  }
+</script>
+
+<nav class="mobileNav">
+  <!-- Label -->
+  <p class="playlist-label">
+    Playlists
+    {#if props.rangeLabel === ""}
+      <span>1-100</span>
+    {:else}
+      <span>{props.rangeLabel}</span>
+    {/if}
+  </p>
+
+  <!-- Buttons -->
+  <ul class="nav-buttons">
+    {#if currentRoute.lastPageRoute !== null}
+      <li class="page-last">
+        <a
+          href="/{currentRoute.lastPageRoute}/"
+          onclick={() => navigateAndRefresh(currentRoute.lastPageRoute)}
+          aria-label="Navigate to previous page of playlists"
+          ><ButtonArrowSVG /></a
+        >
+      </li>
+    {/if}
+    {#if currentRoute.nextPageRoute !== null}
+      <li class="page-advance">
+        <a
+          onclick={() => navigateAndRefresh(currentRoute.nextPageRoute)}
+          href="/{currentRoute.nextPageRoute}/"
+          aria-label="Navigate to next page of playlists"><ButtonArrowSVG /></a
+        >
+      </li>
+    {/if}
+  </ul>
+</nav>
+
+<style>
+  @media (min-width: 770px) {
+    nav {
+      display: none;
+    }
+  }
+  nav {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-top: solid 2px #9f94fe2c;
+  }
+
+  .playlist-label {
+    font-size: clamp(1rem, 8vw, 1.7rem);
+    font-weight: 550;
+    text-align: center;
+  }
+
+  ul {
+    display: flex;
+    padding-inline: 0;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  li.page-advance,
+  li.page-last {
+    list-style-type: none;
+    font-size: clamp(1rem, 8vw, 1.3rem);
+    background-color: var(--background);
+    border-radius: 50%;
+    min-height: 45px;
+    max-width: 45px;
+    width: 100%;
+    text-align: center;
+    border: solid 1.5px var(--accent);
+    padding-inline: 0.4em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    transition: 0.3s all;
+    &:hover,
+    &:hover a {
+      border-color: var(--text);
+      color: var(--text);
+    }
+
+    a {
+      transition: 0.3s all;
+      color: var(--accent);
+      font-weight: 450;
+      text-decoration: none;
+    }
+  }
+
+  li.page-last {
+    transform: rotate(180deg);
+  }
+</style>
