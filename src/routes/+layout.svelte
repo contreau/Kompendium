@@ -110,6 +110,10 @@
         align-items: center;
         gap: 1rem;
       }
+
+      .stats-item span {
+        color: var(--accent);
+      }
     }
 
     @media (max-width: 800px) {

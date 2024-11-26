@@ -29,9 +29,7 @@
         >
       </li>
     {/if}
-    <!-- {#if currentRoute.nextPageRoute === null}
-      <li class="separator">•</li>
-    {/if} -->
+
     <li class="playlist-label">
       Playlists
       {#if props.rangeLabel === ""}
@@ -40,9 +38,7 @@
         <span>{props.rangeLabel}</span>
       {/if}
     </li>
-    <!-- {#if currentRoute.lastPageRoute === null && currentRoute.nextPageRoute !== null}
-      <li class="separator">•</li>
-    {/if} -->
+
     {#if currentRoute.nextPageRoute !== null}
       <li class="page-advance">
         <a
@@ -79,9 +75,9 @@
       font-weight: 550;
     }
 
-    li.separator {
+    /* li.separator {
       font-size: clamp(1rem, 8vw, 1.5rem);
-    }
+    } */
 
     li.page-advance,
     li.page-last {
