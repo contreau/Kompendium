@@ -16,6 +16,6 @@
 
 <style>
   svg {
-    vertical-align: -4.5px;
+    vertical-align: -4px;
   }
 </style>

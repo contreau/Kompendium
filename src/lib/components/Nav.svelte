@@ -21,13 +21,11 @@
 <nav>
   <ul>
     {#if currentRoute.lastPageRoute !== null}
-      <li class="page-last">
-        <a
-          href="/{currentRoute.lastPageRoute}/"
-          onclick={() => navigateAndRefresh(currentRoute.lastPageRoute)}
-          ><ButtonArrowSVG /></a
-        >
-      </li>
+      <a
+        href="/{currentRoute.lastPageRoute}/"
+        onclick={() => navigateAndRefresh(currentRoute.lastPageRoute)}
+        ><li class="page-last"><ButtonArrowSVG /></li>
+      </a>
     {/if}
 
     <li class="playlist-label">
@@ -40,12 +38,14 @@
     </li>
 
     {#if currentRoute.nextPageRoute !== null}
-      <li class="page-advance">
-        <a
-          onclick={() => navigateAndRefresh(currentRoute.nextPageRoute)}
-          href="/{currentRoute.nextPageRoute}/"><ButtonArrowSVG /></a
-        >
-      </li>
+      <a
+        onclick={() => navigateAndRefresh(currentRoute.nextPageRoute)}
+        href="/{currentRoute.nextPageRoute}/"
+      >
+        <li class="page-advance">
+          <ButtonArrowSVG />
+        </li>
+      </a>
     {/if}
   </ul>
 </nav>
@@ -94,17 +94,10 @@
       padding-top: 0.2em;
       padding-bottom: 0.2em;
       transition: 0.3s all;
-      &:hover,
-      &:hover a {
+
+      &:hover {
         border-color: var(--text);
         color: var(--text);
-      }
-
-      a {
-        transition: 0.3s all;
-        color: var(--accent);
-        font-weight: 450;
-        text-decoration: none;
       }
     }
   }

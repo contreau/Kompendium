@@ -32,23 +32,22 @@
   <!-- Buttons -->
   <ul class="nav-buttons">
     {#if currentRoute.lastPageRoute !== null}
-      <li class="page-last">
-        <a
-          href="/{currentRoute.lastPageRoute}/"
-          onclick={() => navigateAndRefresh(currentRoute.lastPageRoute)}
-          aria-label="Navigate to previous page of playlists"
-          ><ButtonArrowSVG /></a
-        >
-      </li>
+      <a
+        href="/{currentRoute.lastPageRoute}/"
+        onclick={() => navigateAndRefresh(currentRoute.lastPageRoute)}
+        aria-label="Navigate to previous page of playlists"
+      >
+        <li class="page-last"><ButtonArrowSVG /></li>
+      </a>
     {/if}
     {#if currentRoute.nextPageRoute !== null}
-      <li class="page-advance">
-        <a
-          onclick={() => navigateAndRefresh(currentRoute.nextPageRoute)}
-          href="/{currentRoute.nextPageRoute}/"
-          aria-label="Navigate to next page of playlists"><ButtonArrowSVG /></a
-        >
-      </li>
+      <a
+        onclick={() => navigateAndRefresh(currentRoute.nextPageRoute)}
+        href="/{currentRoute.nextPageRoute}/"
+        aria-label="Navigate to next page of playlists"
+      >
+        <li class="page-advance"><ButtonArrowSVG /></li>
+      </a>
     {/if}
   </ul>
 </nav>
@@ -93,18 +92,6 @@
     padding-top: 0.2em;
     padding-bottom: 0.2em;
     transition: 0.3s all;
-    &:hover,
-    &:hover a {
-      border-color: var(--text);
-      color: var(--text);
-    }
-
-    a {
-      transition: 0.3s all;
-      color: var(--accent);
-      font-weight: 450;
-      text-decoration: none;
-    }
   }
 
   li.page-last {
