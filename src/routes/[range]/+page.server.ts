@@ -4,6 +4,7 @@ import { routeEntries } from "$lib/routes";
 
 export const entries: EntryGenerator = () => {
   return [
+    { range: "1-100" },
     { range: "101-200" },
     { range: "201-300" },
     { range: "301-400" },

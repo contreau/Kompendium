@@ -21,11 +21,10 @@
 <nav class="mobileNav">
   <!-- Label -->
   <p class="playlist-label">
-    Playlists
     {#if props.rangeLabel === ""}
       <span>1-100</span>
     {:else}
-      <span>{props.rangeLabel}</span>
+      Playlists <span>{props.rangeLabel}</span>
     {/if}
   </p>
 

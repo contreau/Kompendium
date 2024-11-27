@@ -1,24 +1,35 @@
 <script lang="ts">
-  import Playlist from "$lib/components/Playlist.svelte";
   import Nav from "$lib/components/Nav.svelte";
   import MobileNav from "$lib/components/MobileNav.svelte";
-  import type { PageData } from "./$types";
-  let { data }: { data: PageData } = $props();
-  const playlists = data["playlists"];
+  import SpotifySVG from "$lib/svg/SpotifySVG.svelte";
 </script>
 
-<MobileNav rangeLabel="" />
-<Nav rangeLabel="" />
+<svelte:head>
+  <title>Konrad's Songbook</title>
+</svelte:head>
 
-<section class="content-grid">
-  {#each playlists as playlist}
-    <Playlist
-      name={playlist.name}
-      url={playlist.url}
-      trackCount={playlist.trackCount}
-      description={playlist.description}
-      dateCreated={playlist.dateCreated}
-      tracks={playlist.tracks}
-    />
-  {/each}
-</section>
+<header>
+  <div>
+    <h1>Konrad's Songbook</h1>
+    <p class="stats">
+      <span class="stats-item"><span>826</span> Original Playlists</span>
+      <span class="stats-item separator">•</span>
+      <span class="stats-item">
+        <span>59,903</span>
+        Songs
+      </span>
+      <span class="stats-item separator">•</span>
+      <a
+        href="https://open.spotify.com/user/1261690341?si=235dbc5649f8441e"
+        target="_blank"><SpotifySVG /></a
+      >
+      <span class="separator">•</span>
+      <a href="/in-memoriam">In Memoriam</a>
+    </p>
+  </div>
+</header>
+
+<main>
+  <MobileNav rangeLabel="" />
+  <Nav rangeLabel="" />
+</main>

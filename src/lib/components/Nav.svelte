@@ -28,14 +28,11 @@
       </a>
     {/if}
 
-    <li class="playlist-label">
-      Playlists
-      {#if props.rangeLabel === ""}
-        <span>1-100</span>
-      {:else}
-        <span>{props.rangeLabel}</span>
-      {/if}
-    </li>
+    {#if props.rangeLabel !== ""}
+      <li class="playlist-label">
+        Playlists <span>{props.rangeLabel}</span>
+      </li>
+    {/if}
 
     {#if currentRoute.nextPageRoute !== null}
       <a

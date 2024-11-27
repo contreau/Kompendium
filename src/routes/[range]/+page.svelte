@@ -23,3 +23,14 @@
     />
   {/each}
 </section>
+
+<style>
+  /* Playlist Listing Grid */
+  .content-grid {
+    display: grid;
+    column-gap: 2rem;
+    row-gap: 3rem;
+    align-items: start;
+    grid-template-columns: repeat(var(--cols), minmax(250px, 1fr));
+  }
+</style>
