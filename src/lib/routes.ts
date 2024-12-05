@@ -1,4 +1,6 @@
-export const routeEntries = [
+import type { routeDetails } from "./types";
+
+export const playlistRoutes: Array<routeDetails> = [
   { range: "", lastPageRoute: null, nextPageRoute: "1-100" },
   { range: "1-100", lastPageRoute: "/", nextPageRoute: "101-200" },
   { range: "101-200", lastPageRoute: "1-100", nextPageRoute: "201-300" },

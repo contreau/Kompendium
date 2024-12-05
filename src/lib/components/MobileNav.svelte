@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { routeEntries } from "$lib/routes";
+  import { playlistRoutes } from "$lib/routes";
   import { invalidate } from "$app/navigation";
   import ButtonArrowSVG from "$lib/svg/ButtonArrowSVG.svelte";
   const props = $props();
 
-  let currentRoute = routeEntries.find(
+  let currentRoute = playlistRoutes.find(
     (entry) => entry.range === props.rangeLabel
   ) || {
     lastPageRoute: null,
