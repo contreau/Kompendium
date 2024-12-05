@@ -20,29 +20,37 @@
 
 <nav class="mobileNav">
   <!-- Label -->
-  <p class="playlist-label">
-    {#if props.rangeLabel === ""}
-      <span>1-100</span>
-    {:else}
+  {#if props.rangeLabel != ""}
+    <p class="playlist-label">
       Playlists <span>{props.rangeLabel}</span>
-    {/if}
-  </p>
+    </p>
+  {/if}
 
   <!-- Buttons -->
   <ul class="nav-buttons">
-    {#if currentRoute.lastPageRoute !== null}
+    {#if currentRoute.lastPageRoute !== null && currentRoute.lastPageRoute !== "/"}
       <a
-        href="/{currentRoute.lastPageRoute}/"
-        onclick={() => navigateAndRefresh(currentRoute.lastPageRoute)}
+        href="/playlists/{currentRoute.lastPageRoute}"
+        onclick={() =>
+          navigateAndRefresh(`/playlists/${currentRoute.lastPageRoute}`)}
         aria-label="Navigate to previous page of playlists"
+      >
+        <li class="page-last"><ButtonArrowSVG /></li>
+      </a>
+    {:else}
+      <a
+        href="/"
+        onclick={() => navigateAndRefresh("/")}
+        aria-label="Navigate to home page"
       >
         <li class="page-last"><ButtonArrowSVG /></li>
       </a>
     {/if}
     {#if currentRoute.nextPageRoute !== null}
       <a
-        onclick={() => navigateAndRefresh(currentRoute.nextPageRoute)}
-        href="/{currentRoute.nextPageRoute}/"
+        onclick={() =>
+          navigateAndRefresh(`/playlists/${currentRoute.nextPageRoute}`)}
+        href="/playlists/{currentRoute.nextPageRoute}"
         aria-label="Navigate to next page of playlists"
       >
         <li class="page-advance"><ButtonArrowSVG /></li>

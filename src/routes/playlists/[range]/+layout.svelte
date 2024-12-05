@@ -1,7 +1,6 @@
 <script>
   import SpotifySVG from "$lib/svg/SpotifySVG.svelte";
   let { children } = $props();
-  //   TODO: nest into /playlists
 </script>
 
 <svelte:head>

@@ -20,11 +20,17 @@
 
 <nav>
   <ul>
-    {#if currentRoute.lastPageRoute !== null}
+    {#if currentRoute.lastPageRoute !== null && currentRoute.lastPageRoute !== "/"}
       <a
-        href="/{currentRoute.lastPageRoute}/"
-        onclick={() => navigateAndRefresh(currentRoute.lastPageRoute)}
-        ><li class="page-last"><ButtonArrowSVG /></li>
+        href="/playlists/{currentRoute.lastPageRoute}"
+        onclick={() =>
+          navigateAndRefresh(`/playlists/${currentRoute.lastPageRoute}`)}
+      >
+        <li class="page-last"><ButtonArrowSVG /></li>
+      </a>
+    {:else}
+      <a href="/" onclick={() => navigateAndRefresh("/")}>
+        <li class="page-last"><ButtonArrowSVG /></li>
       </a>
     {/if}
 
@@ -36,8 +42,9 @@
 
     {#if currentRoute.nextPageRoute !== null}
       <a
-        onclick={() => navigateAndRefresh(currentRoute.nextPageRoute)}
-        href="/{currentRoute.nextPageRoute}/"
+        onclick={() =>
+          navigateAndRefresh(`/playlists/${currentRoute.nextPageRoute}`)}
+        href="/playlists/{currentRoute.nextPageRoute}"
       >
         <li class="page-advance">
           <ButtonArrowSVG />

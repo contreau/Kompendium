@@ -1,4 +1,4 @@
-import type { EntryGenerator } from "./$types";
+import type { EntryGenerator } from "./$types.js";
 import type { playlistJSON } from "$lib/types";
 import { routeEntries } from "$lib/routes";
 

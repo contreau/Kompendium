@@ -1,3 +1,5 @@
+export const prerender = true;
+
 // import type { playlistJSON } from "$lib/types";
 
 // // TODO: add a jump to top button after x amount of scrolling
