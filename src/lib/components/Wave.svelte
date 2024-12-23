@@ -1,8 +1,29 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { browser } from "$app/environment";
+
+  function size_wave() {
+    // smallest number of wave bars: 20 at 320px viewport
+    // grows to 50 bars by 1440px viewport
+    // grow 1 bar roughly every 37 pixels
+    const current_viewport_width = window.screen.availWidth;
+    const increment = 37;
+    const diff = current_viewport_width - 320;
+    const growth_amount = Math.floor(diff / increment);
+    for (let i = 0; i < growth_amount; i++) {
+      wave_count.push(0);
+    }
+  }
+
+  let wave_count: Array<number> = $state([]);
+  if (browser) {
+    // Create wave bars based on viewport
+    wave_count = Array.from({ length: 20 }, (_, i) => i);
+    size_wave();
+  }
 
   onMount(() => {
-    // Create wave bars
+    // Grab wave bars
     const bars: Array<HTMLDivElement> = Array.from(
       document.querySelectorAll("div.wave-bar")
     );
@@ -34,7 +55,7 @@
 </script>
 
 <section class="wave-container">
-  {#each { length: 50 } as _}
+  {#each wave_count}
     <div class="wave-bar"></div>
   {/each}
 </section>
