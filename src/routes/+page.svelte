@@ -54,8 +54,8 @@
 </header>
 
 <nav class="site-links">
-  <p><a href="/playlists/1-100">Explore Playlists</a></p>
-  <p><a href="/in-memoriam">In Memoriam</a></p>
+  <p><a href="/playlists/1-100">Playlists</a></p>
+  <p><a href="/for-konrad">For Konrad</a></p>
 </nav>
 
 <!-- WAVE VISUAL -->
@@ -67,7 +67,7 @@
 
 <style>
   header {
-    border-bottom: solid 2px #6290fc18;
+    border-bottom: solid 2px #6290fc3a;
   }
 
   nav {
@@ -101,7 +101,7 @@
 
   h1 {
     font-size: clamp(2.5rem, 10vw, 6.5rem);
-    font-weight: 600;
+    font-weight: 650;
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
     letter-spacing: 2.5px;
