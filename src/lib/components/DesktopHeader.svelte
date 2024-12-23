@@ -22,7 +22,7 @@
   }
 
   h1 {
-    font-size: clamp(2.5rem, 10vw, 6.5rem);
+    font-size: clamp(3.2rem, 6.5vw, 6.5rem);
     font-weight: 650;
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
@@ -30,13 +30,21 @@
   }
 
   nav p {
-    font-size: clamp(1.4rem, 6vw, 1.8rem);
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
     font-weight: 600;
     margin-top: 1rem;
     margin-bottom: 1rem;
 
     a {
       color: var(--accent);
+    }
+  }
+
+  @media (max-width: 700px) {
+    header {
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
     }
   }
 </style>

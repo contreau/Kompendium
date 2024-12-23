@@ -65,15 +65,9 @@ a:not(.site-links p > a):hover {
   color: var(--faded-blue);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
   body {
     padding-inline: 1em;
-  }
-  header {
-    flex-direction: column;
-    justify-content: center;
-    gap: 2rem;
-    text-align: center;
   }
 }
 

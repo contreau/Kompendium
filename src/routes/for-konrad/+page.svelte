@@ -1,5 +1,6 @@
 <script lang="ts">
-  import konradPortrait from "$lib/assets/konrad-portrait--375x500-min.jpg";
+  import konradPortraitFull from "$lib/assets/konrad-portrait--375x500-min.jpg";
+  import konradPortraitMobile from "$lib/assets/konrad-portrait--225x300.jpg";
   import DesktopHeader from "$lib/components/DesktopHeader.svelte";
 </script>
 
@@ -14,13 +15,16 @@
 />
 
 <section class="content-grid">
-  <img
-    src={konradPortrait}
-    class="konrad-portrait"
-    alt="Konrad"
-    width="375"
-    height="500"
-  />
+  <picture class="konrad-portrait">
+    <source
+      srcset={konradPortraitMobile}
+      media="(max-width: 700px)"
+      width="225"
+      height="300"
+    />
+    <img src={konradPortraitFull} alt="Konrad" width="375" height="500" />
+  </picture>
+
   <div class="memoriam-content">
     <h3>Konrad Manly Rauscher</h3>
     <p class="lifespan">
@@ -62,17 +66,18 @@
   .memoriam-content {
     h3 {
       color: var(--accent);
-      font-size: clamp(1rem, 6vw, 2rem);
+      font-size: clamp(1.5rem, 8vw, 2rem);
       margin-top: 0;
       margin-bottom: 0rem;
     }
     p.lifespan {
       font-weight: 700;
       margin: 0.2rem 0;
+      font-size: clamp(0.8rem, 5.5vw, 1.25rem);
     }
 
-    p {
-      font-size: clamp(1rem, 6vw, 1.25rem);
+    p:not(.lifespan) {
+      font-size: clamp(0.8rem, 5vw, 1.25rem);
     }
   }
 
@@ -81,7 +86,34 @@
   }
 
   .konrad-portrait {
-    border-radius: 10px;
-    filter: grayscale(1);
+    justify-self: center;
+    img {
+      border-radius: 10px;
+      filter: grayscale(1);
+    }
+  }
+
+  @media (max-width: 700px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+      margin-top: 2rem;
+    }
+
+    h3,
+    p.lifespan {
+      text-align: center;
+    }
+
+    .memoriam-text {
+      margin-top: 2rem;
+    }
+  }
+
+  @media (700px <= width <= 1270px) {
+    .content-grid {
+      grid-template-columns: 45% 50%;
+      gap: 5%;
+      align-items: start;
+    }
   }
 </style>
