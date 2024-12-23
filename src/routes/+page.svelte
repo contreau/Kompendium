@@ -1,38 +1,66 @@
 <script lang="ts">
   import Wave from "$lib/components/Wave.svelte";
+  import MobileLanding from "$lib/components/MobileLanding.svelte";
+  import { browser } from "$app/environment";
 </script>
 
 <svelte:head>
   <title>Kompendium • In Memory of Konrad Rauscher</title>
 </svelte:head>
 
-<header>
-  <h1>Kompendium</h1>
-  <p class="stats">
-    <span class="stats-item"
-      >By <a
-        href="https://open.spotify.com/user/1261690341?si=d3127b482cc14c4b"
-        target="_blank">Konrad Rauscher</a
-      ></span
-    >
-    <span class="stats-item separator">|</span>
-    <span class="stats-item"><span>11</span> Years</span>
-    <span class="stats-item separator">|</span>
-    <span class="stats-item"><span>826</span> Original Playlists</span>
-    <span class="stats-item separator">|</span>
-    <span class="stats-item"><span>59,903</span> Songs</span>
-  </p>
-</header>
+{#if browser && window.screen.availWidth <= 600}
+  <MobileLanding />
+{:else}
+  <header>
+    <h1>Kompendium</h1>
 
-<nav class="site-links">
-  <p><a href="/playlists/1-100">Playlists</a></p>
-  <p><a href="/for-konrad">For Konrad</a></p>
-</nav>
+    <div class="subtitle-container">
+      <p class="subtitle-item byline">
+        By <a
+          href="https://open.spotify.com/user/1261690341?si=d3127b482cc14c4b"
+          target="_blank">Konrad Rauscher</a
+        >
+      </p>
+      <div class="separator">|</div>
+      <p class="subtitle-item"><span>11</span> Years</p>
+      <div class="separator">|</div>
+      <p class="subtitle-item"><span>826</span> Original Playlists</p>
+      <div class="separator">|</div>
+      <p class="subtitle-item"><span>59,903</span> Songs</p>
+    </div>
+  </header>
 
-<!-- WAVE VISUAL -->
-<Wave />
+  <nav class="site-links">
+    <p><a href="/playlists/1-100">Playlists</a></p>
+    <p><a href="/for-konrad">For Konrad</a></p>
+  </nav>
+
+  <!-- WAVE VISUAL -->
+  <Wave />
+{/if}
 
 <style>
+  .subtitle-container {
+    display: flex;
+    align-items: center;
+
+    .subtitle-item {
+      font-size: clamp(1rem, 2.5vw, 1.65rem);
+      font-weight: 450;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .subtitle-item span {
+      color: var(--accent);
+    }
+  }
+
+  .separator {
+    font-size: clamp(1rem, 2.5vw, 1.65rem);
+  }
+
   header {
     border-bottom: solid 2px var(--faded-blue);
   }
@@ -45,7 +73,7 @@
 
     p {
       text-align: center;
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 3.3vw, 2rem);
       font-weight: 600;
       letter-spacing: 0.5px;
     }
@@ -66,25 +94,10 @@
   }
 
   h1 {
-    font-size: clamp(2.5rem, 10vw, 6.5rem);
+    font-size: clamp(2.7rem, 10vw, var(--h1-font-size));
     font-weight: 650;
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
     letter-spacing: 2.5px;
-  }
-
-  p.stats {
-    font-size: clamp(1.4rem, 6vw, 1.65rem);
-    font-weight: 450;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .stats-item a {
-    color: var(--accent);
-  }
-
-  .stats-item > span {
-    color: var(--accent);
   }
 </style>

@@ -22,7 +22,7 @@
   }
 
   h1 {
-    font-size: clamp(3.2rem, 6.5vw, 6.5rem);
+    font-size: clamp(3.2rem, 6.5vw, var(--h1-font-size));
     font-weight: 650;
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
