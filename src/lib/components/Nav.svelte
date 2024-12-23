@@ -63,7 +63,7 @@
   nav {
     padding-top: 5rem;
     padding-bottom: 5rem;
-    border-top: solid 2px #9f94fe2c;
+    /* border-top: solid 2px #9f94fe2c; */
     ul {
       margin-top: 0;
       margin-bottom: 0;

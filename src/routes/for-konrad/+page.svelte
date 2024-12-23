@@ -1,21 +1,17 @@
 <script lang="ts">
   import konradPortrait from "$lib/assets/konrad-portrait--375x500-min.jpg";
+  import DesktopHeader from "$lib/components/DesktopHeader.svelte";
 </script>
 
 <svelte:head>
   <title>Kompendium • For Konrad</title>
 </svelte:head>
 
-<header>
-  <h1>For Konrad</h1>
-  <nav>
-    <p class="nav-item">
-      <a href="/">Home</a><span class="separator">•</span><a
-        href="/playlists/1-100">Playlists</a
-      >
-    </p>
-  </nav>
-</header>
+<DesktopHeader
+  heading1="For Konrad"
+  secondPage="Playlists"
+  secondPageSlug="playlists/1-100"
+/>
 
 <section class="content-grid">
   <img
@@ -55,37 +51,6 @@
 </section>
 
 <style>
-  header {
-    border-bottom: solid 2px #6290fc3a;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  h1 {
-    font-size: clamp(2.5rem, 10vw, 6.5rem);
-    font-weight: 650;
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
-    letter-spacing: 2.5px;
-  }
-
-  nav p {
-    font-size: clamp(1.4rem, 6vw, 1.65rem);
-    font-weight: 450;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-
-    a {
-      color: var(--accent);
-    }
-  }
-
-  .separator {
-    margin-left: 0.75rem;
-    margin-right: 0.75rem;
-  }
-
   .content-grid {
     display: grid;
     grid-template-columns: 30% 68%;

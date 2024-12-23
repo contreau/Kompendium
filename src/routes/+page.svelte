@@ -15,11 +15,11 @@
         target="_blank">Konrad Rauscher</a
       ></span
     >
-    <span class="stats-item separator">•</span>
+    <span class="stats-item separator">|</span>
     <span class="stats-item"><span>11</span> Years</span>
-    <span class="stats-item separator">•</span>
+    <span class="stats-item separator">|</span>
     <span class="stats-item"><span>826</span> Original Playlists</span>
-    <span class="stats-item separator">•</span>
+    <span class="stats-item separator">|</span>
     <span class="stats-item"><span>59,903</span> Songs</span>
   </p>
 </header>
@@ -34,7 +34,7 @@
 
 <style>
   header {
-    border-bottom: solid 2px #6290fc3a;
+    border-bottom: solid 2px var(--faded-blue);
   }
 
   nav {
@@ -45,22 +45,22 @@
 
     p {
       text-align: center;
-      font-size: 1.8rem;
-      font-weight: 500;
+      font-size: 2rem;
+      font-weight: 600;
       letter-spacing: 0.5px;
     }
 
     a {
       text-decoration: none;
       color: var(--text);
-      padding: 0.5em;
-      border: solid 1.5px transparent;
-      border-radius: 10px;
-      will-change: filter;
-      filter: drop-shadow(0 0 0.45rem var(--text));
+      padding: 0.35em 2em;
+      border-left: solid 2.25px var(--text);
+      border-right: solid 2.25px var(--text);
+      border-radius: 0.5px;
       &:hover {
-        color: #467eff;
-        filter: drop-shadow(0 0 0.45rem #467eff);
+        color: var(--accent);
+        border-left-color: var(--accent);
+        border-right-color: var(--accent);
       }
     }
   }
@@ -86,10 +86,5 @@
 
   .stats-item > span {
     color: var(--accent);
-  }
-
-  .separator {
-    margin-left: 0.75rem;
-    margin-right: 0.75rem;
   }
 </style>

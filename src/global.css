@@ -11,6 +11,7 @@
   --secondary: #2a2a83;
   --accent: #6d98fd;
   --wave-blue: #004bfa;
+  --faded-blue: #6290fc46;
   --cols: auto-fit;
   --track-cols: auto-fit;
 }
@@ -56,6 +57,12 @@ a {
 
 a:not(.site-links p > a):hover {
   color: var(--text);
+}
+
+.separator {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+  color: var(--faded-blue);
 }
 
 @media (max-width: 800px) {
