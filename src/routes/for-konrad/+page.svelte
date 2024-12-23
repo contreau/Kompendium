@@ -2,6 +2,10 @@
   import konradPortrait from "$lib/assets/konrad-portrait--375x500-min.jpg";
 </script>
 
+<svelte:head>
+  <title>Kompendium • For Konrad</title>
+</svelte:head>
+
 <header>
   <h1>For Konrad</h1>
   <nav>
@@ -14,7 +18,13 @@
 </header>
 
 <section class="content-grid">
-  <img src={konradPortrait} class="konrad-portrait" alt="Konrad" />
+  <img
+    src={konradPortrait}
+    class="konrad-portrait"
+    alt="Konrad"
+    width="375"
+    height="500"
+  />
   <div class="memoriam-content">
     <h3>Konrad Manly Rauscher</h3>
     <p class="lifespan">
@@ -67,7 +77,7 @@
     margin-bottom: 1rem;
 
     a {
-      color: #6290fc;
+      color: var(--accent);
     }
   }
 
@@ -86,7 +96,7 @@
 
   .memoriam-content {
     h3 {
-      color: #6290fc;
+      color: var(--accent);
       font-size: clamp(1rem, 6vw, 2rem);
       margin-top: 0;
       margin-bottom: 0rem;
@@ -107,5 +117,6 @@
 
   .konrad-portrait {
     border-radius: 10px;
+    filter: grayscale(1);
   }
 </style>

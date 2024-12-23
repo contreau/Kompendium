@@ -7,10 +7,9 @@
 :root {
   --text: #ededee;
   --background: #0e0d11;
-  --primary: #b1aec8;
-  --secondary: #3d3964;
-  --accent: #a095ff;
-  --page-border: #a095ff7e;
+  --primary: #8f93db;
+  --secondary: #2a2a83;
+  --accent: #6d98fd;
   --wave-blue: #004bfa;
   --cols: auto-fit;
   --track-cols: auto-fit;
@@ -51,7 +50,12 @@ img {
 }
 
 a {
-  color: #c0b9ff;
+  color: var(--accent);
+  transition: all 0.2s;
+}
+
+a:not(.site-links p > a):hover {
+  color: var(--text);
 }
 
 @media (max-width: 800px) {

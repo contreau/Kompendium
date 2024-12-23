@@ -91,7 +91,6 @@
       border-radius: 10px;
       will-change: filter;
       filter: drop-shadow(0 0 0.45rem var(--text));
-      transition: all 0.2s;
       &:hover {
         color: #467eff;
         filter: drop-shadow(0 0 0.45rem #467eff);
@@ -115,11 +114,11 @@
   }
 
   .stats-item a {
-    color: #6290fc;
+    color: var(--accent);
   }
 
   .stats-item > span {
-    color: #6290fc;
+    color: var(--accent);
   }
 
   .separator {

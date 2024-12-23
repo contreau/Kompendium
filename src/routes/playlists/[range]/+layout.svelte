@@ -1,15 +1,14 @@
 <script>
-  import SpotifySVG from "$lib/svg/SpotifySVG.svelte";
   let { children } = $props();
 </script>
 
 <svelte:head>
-  <title>Konrad's Songbook</title>
+  <title>Kompendium • Playlists</title>
 </svelte:head>
 
 <header>
   <div>
-    <h1>Konrad's Songbook</h1>
+    <h1>Kompendium</h1>
     <p class="stats">
       <span class="stats-item"><span>826</span> Original Playlists</span>
       <span class="stats-item separator">•</span>
@@ -18,12 +17,7 @@
         Songs
       </span>
       <span class="stats-item separator">•</span>
-      <a
-        href="https://open.spotify.com/user/1261690341?si=235dbc5649f8441e"
-        target="_blank"><SpotifySVG /></a
-      >
-      <span class="separator">•</span>
-      <a href="/in-memoriam">In Memoriam</a>
+      <a href="/for-konrad">For Konrad</a>
     </p>
   </div>
 </header>
@@ -82,28 +76,6 @@
     margin-bottom: 1rem;
     font-size: clamp(1.8rem, 5.6vw, 5rem);
     font-weight: 550;
-    background-image: linear-gradient(
-      to right top,
-      #9890e5,
-      #7f74d7,
-      #6658c9,
-      #4b3dba,
-      #2c1faa
-    );
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 500%;
-    background-position: bottom left;
-    animation: move-gradient ease alternate-reverse infinite 2.8s;
-  }
-
-  @keyframes move-gradient {
-    0% {
-      background-position: bottom left;
-    }
-    100% {
-      background-position: top right;
-    }
   }
 
   main {
