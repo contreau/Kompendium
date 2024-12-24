@@ -1,13 +1,13 @@
 <script>
   let { children } = $props();
-  import DesktopHeader from "$lib/components/DesktopHeader.svelte";
+  import SecondaryHeader from "$lib/components/SecondaryHeader.svelte";
 </script>
 
 <svelte:head>
   <title>Kompendium • Playlists</title>
 </svelte:head>
 
-<DesktopHeader
+<SecondaryHeader
   heading1="Playlists"
   secondPage="For Konrad"
   secondPageSlug="for-konrad"

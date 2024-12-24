@@ -1,14 +1,13 @@
 <script lang="ts">
   import Playlist from "$lib/components/Playlist.svelte";
-  import PlaylistNav from "$lib/components/PlaylistNav.svelte";
-  import MobileNav from "$lib/components/MobileNav.svelte";
+  import PlaylistFilters from "$lib/components/PlaylistFilters.svelte";
   import type { PageData } from "./$types";
   let { data }: { data: PageData } = $props();
 
   // Playlist component prop (reactive)
   const playlists = $derived(data["playlists"]);
 
-  // PlaylistNav component props (currentPageRoute is reactive)
+  // PlaylistFilters component props (currentPageRoute is reactive)
   const currentPageRoute = $derived(data["currentPageRoute"]);
   const viewingOrder = data["viewingOrder"];
 
@@ -18,8 +17,7 @@
   // removed prop: tracks={playlist.tracks}
 </script>
 
-<MobileNav rangeLabel={`${currentPageRoute}`} />
-<PlaylistNav rangeLabel={`${currentPageRoute}`} {viewingOrder} />
+<PlaylistFilters rangeLabel={`${currentPageRoute}`} {viewingOrder} />
 
 <section class="content-grid">
   {#each playlists as playlist, index}

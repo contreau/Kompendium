@@ -1,14 +1,14 @@
 <script lang="ts">
   import konradPortraitFull from "$lib/assets/konrad-portrait--375x500-min.jpg";
   import konradPortraitMobile from "$lib/assets/konrad-portrait--225x300.jpg";
-  import DesktopHeader from "$lib/components/DesktopHeader.svelte";
+  import SecondaryHeader from "$lib/components/SecondaryHeader.svelte";
 </script>
 
 <svelte:head>
   <title>Kompendium • For Konrad</title>
 </svelte:head>
 
-<DesktopHeader
+<SecondaryHeader
   heading1="For Konrad"
   secondPage="Playlists"
   secondPageSlug="playlists/1-100?order=descending"
