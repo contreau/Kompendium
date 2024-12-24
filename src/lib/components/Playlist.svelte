@@ -8,7 +8,7 @@
   let isExpanded = $state(false); // expanded state of a given playlist
 </script>
 
-<div class="playlist" class:isExpanded>
+<div class="playlist" id={props.index} class:isExpanded>
   <div class="playlist--info">
     <h3>
       <a href={props.url} id={props.name} target="__blank">{props.name}</a>

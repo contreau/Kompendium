@@ -11,7 +11,7 @@
 <DesktopHeader
   heading1="For Konrad"
   secondPage="Playlists"
-  secondPageSlug="playlists/1-100"
+  secondPageSlug="playlists/1-100?order=descending"
 />
 
 <section class="content-grid">

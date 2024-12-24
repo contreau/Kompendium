@@ -1,6 +1,6 @@
 <script lang="ts">
   import { playlistRoutes } from "$lib/routes";
-  import { invalidate } from "$app/navigation";
+  import { goto, invalidate } from "$app/navigation";
   import ButtonArrowSVG from "$lib/svg/ButtonArrowSVG.svelte";
   const props = $props();
 
@@ -11,45 +11,66 @@
     nextPageRoute: null,
   };
 
-  function navigateAndRefresh(href: string) {
-    invalidate(href);
-    // Ensure the href is treated as an absolute path
-    window.location.href = new URL(href, window.location.origin).toString();
+  let viewingOrder = $state(props.viewingOrder);
+  let selectedRange = $state(props.rangeLabel);
+
+  async function refreshView(href: string) {
+    await goto(`/playlists/${href}?order=${viewingOrder}`);
+    await invalidate(`/playlists/${href}?order=${viewingOrder}`);
   }
 </script>
+
+<select
+  name="playlist-order"
+  id="playlist-order"
+  bind:value={viewingOrder}
+  onchange={() => refreshView(`${selectedRange}`)}
+>
+  <option value="descending">Descending</option>
+  <option value="ascending">Ascending</option>
+</select>
+
+<select
+  name="playlist-ranges"
+  id="playlist-ranges"
+  bind:value={selectedRange}
+  onchange={() => refreshView(`${selectedRange}`)}
+>
+  <option value="1-100">1-100</option>
+  <option value="101-200">101-200</option>
+  <option value="201-300">201-300</option>
+  <option value="301-400">301-400</option>
+  <option value="401-500">401-500</option>
+  <option value="501-600">501-600</option>
+  <option value="601-700">601-700</option>
+  <option value="701-800">701-800</option>
+  <option value="801-826">801-826</option>
+</select>
 
 <nav>
   <ul>
     {#if currentRoute.lastPageRoute !== null && currentRoute.lastPageRoute !== "/"}
-      <a
-        href="/playlists/{currentRoute.lastPageRoute}"
-        onclick={() =>
-          navigateAndRefresh(`/playlists/${currentRoute.lastPageRoute}`)}
-      >
-        <li class="page-last"><ButtonArrowSVG /></li>
-      </a>
+      <!-- <a href="/playlists/{currentRoute.lastPageRoute}"> -->
+      <li class="page-last"><ButtonArrowSVG /></li>
+      <!-- </a> -->
     {:else}
-      <a href="/" onclick={() => navigateAndRefresh("/")}>
-        <li class="page-last"><ButtonArrowSVG /></li>
-      </a>
+      <!-- <a href="/"> -->
+      <li class="page-last"><ButtonArrowSVG /></li>
+      <!-- </a> -->
     {/if}
 
     {#if props.rangeLabel !== ""}
-      <li class="playlist-label">
-        Playlists <span>{props.rangeLabel}</span>
-      </li>
+      <!-- <li class="playlist-label"> -->
+      Playlists <span>{props.rangeLabel}</span>
+      <!-- </li> -->
     {/if}
 
     {#if currentRoute.nextPageRoute !== null}
-      <a
-        onclick={() =>
-          navigateAndRefresh(`/playlists/${currentRoute.nextPageRoute}`)}
-        href="/playlists/{currentRoute.nextPageRoute}"
-      >
-        <li class="page-advance">
-          <ButtonArrowSVG />
-        </li>
-      </a>
+      <!-- <a href="/playlists/{currentRoute.nextPageRoute}"> -->
+      <li class="page-advance">
+        <ButtonArrowSVG />
+      </li>
+      <!-- </a> -->
     {/if}
   </ul>
 </nav>
@@ -74,14 +95,6 @@
       list-style-type: none;
       padding-left: 0;
     }
-    li.playlist-label {
-      font-size: clamp(1rem, 8vw, 1.7rem);
-      font-weight: 550;
-    }
-
-    /* li.separator {
-      font-size: clamp(1rem, 8vw, 1.5rem);
-    } */
 
     li.page-advance,
     li.page-last {
@@ -115,9 +128,7 @@
       flex-direction: column;
       gap: 0rem;
     }
-    .playlist-label {
-      order: -1;
-    }
+
     nav {
       li.page-advance,
       li.page-last {

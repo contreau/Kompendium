@@ -1,17 +1,26 @@
 import type { playlistJSON } from "$lib/types";
 import { playlistRoutes } from "$lib/routes";
-import playlistData from "$lib/data/playlists-web-descending.json";
+import descendingPlaylistData from "$lib/data/playlists-web-descending.json";
+import ascendingPlaylistData from "$lib/data/playlists-web-ascending.json";
 
-export const load = async ({ params }) => {
+export const load = async ({ params, url }) => {
   const currentRoute = playlistRoutes.find(
     (route) => route.range === params.range
   );
   if (!currentRoute) {
     throw new Error("Invalid range");
   }
+  const viewingOrder = url.searchParams.get("order");
+
+  let chosenData;
+  if (viewingOrder === "descending") {
+    chosenData = descendingPlaylistData as playlistJSON;
+  } else if (viewingOrder === "ascending") {
+    chosenData = ascendingPlaylistData as playlistJSON;
+  }
 
   const [start, end] = currentRoute.range.split("-").map(Number);
-  const playlists: playlistJSON = (playlistData as playlistJSON).slice(
+  const playlists: playlistJSON = (chosenData as playlistJSON).slice(
     start - 1,
     end
   );
@@ -19,5 +28,6 @@ export const load = async ({ params }) => {
   return {
     playlists,
     currentPageRoute: currentRoute.range,
+    viewingOrder,
   };
 };
