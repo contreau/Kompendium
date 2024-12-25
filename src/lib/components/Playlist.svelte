@@ -3,12 +3,42 @@
   import CalendarSVG from "$lib/svg/CalendarSVG.svelte";
   import AlbumSVG from "$lib/svg/AlbumSVG.svelte";
   import ArtistSVG from "$lib/svg/ArtistSVG.svelte";
+  import type { Tracks } from "$lib/types";
   const props = $props();
+
   let isOpen = $state(false); // open + close state of details element
   let isExpanded = $state(false); // expanded state of a given playlist
+  let loadedTracklist = $state(false);
+
+  const retrieve_tracklist = async function (index: number) {
+    if (!loadedTracklist) {
+      const response = await fetch(
+        `/api/tracklists?id=${index}&order=${props.order}`
+      );
+      const tracks: Tracks = await response.json();
+      console.log(tracks);
+      loadedTracklist = true;
+    }
+  };
+
+  // TODO:
+  // - use {#await} block around the <ol> to unpack the promise returned by the function retrieve_tracklist
+  // - properly rerender grid items when viewingOrder is toggled so that proper data is refetched on hover
+
+  // const tracks: Promise<Tracks | null> = $state(
+  //   retrieve_tracklist(props.index)
+  // );
 </script>
 
-<div class="playlist" id={props.index} class:isExpanded>
+<div
+  class="playlist"
+  id={props.index}
+  class:isExpanded
+  onmouseenter={() => retrieve_tracklist(props.index)}
+  role="button"
+  tabindex="0"
+  onfocus={() => retrieve_tracklist(props.index)}
+>
   <div class="playlist--info">
     <h3>
       <a href={props.url} id={props.name} target="__blank">{props.name}</a>

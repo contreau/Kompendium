@@ -11,7 +11,7 @@ interface Playlist {
   tracks: Array<Tracks>;
 }
 
-interface Tracks {
+export interface Tracks {
   name: string;
   artists: Array<string>;
   album: string;

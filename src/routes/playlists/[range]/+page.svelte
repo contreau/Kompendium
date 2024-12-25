@@ -28,6 +28,7 @@
       trackCount={playlist.trackCount}
       description={playlist.description}
       dateCreated={playlist.dateCreated}
+      order={viewingOrder}
     />
   {/each}
 </section>
