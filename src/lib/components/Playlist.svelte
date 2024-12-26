@@ -5,6 +5,7 @@
   import ArtistSVG from "$lib/svg/ArtistSVG.svelte";
   import type { Tracks } from "$lib/types";
   import { store } from "$lib/state/store.svelte";
+  import { onMount } from "svelte";
   const props = $props();
 
   let isOpen = $state(false); // open + close state of details element
@@ -25,7 +26,7 @@
   });
 
   // 'order' query string value should never be props.viewingOrder - because props don't update reactively/automatically by default. it needs to be the from the global state (store.viewingOrder), since it's being updated and tracked across components
-  const retrieve_tracklist = async function (index: number) {
+  async function retrieve_tracklist(index: number) {
     if (!loadedTracklist) {
       const response = await fetch(
         `/api/tracklists?id=${index}&order=${store.viewingOrder}`
@@ -33,12 +34,33 @@
       tracklistPromise = await response.json();
       loadedTracklist = true;
     }
-  };
+  }
+
+  // create an intersection observer with the div.playlist to fetch the tracklist data
+  let target: HTMLDivElement;
+  onMount(() => {
+    if (window.screen.availWidth <= 1200) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              retrieve_tracklist(Number(target.id));
+            }
+          });
+        },
+        {
+          threshold: [0.5, 1],
+        }
+      );
+      observer.observe(target);
+    }
+  });
 </script>
 
 <div
   class="playlist"
   id={props.index}
+  bind:this={target}
   class:isExpanded
   onmouseenter={() => retrieve_tracklist(props.index)}
   role="button"
@@ -143,7 +165,7 @@
 
   h3 {
     font-weight: 375;
-    font-size: clamp(1.4rem, 6vw, 1.7rem);
+    font-size: clamp(1.2rem, 6vw, 1.7rem);
     margin: 1rem 0;
   }
 
