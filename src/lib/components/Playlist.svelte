@@ -200,46 +200,57 @@
 
   ol {
     display: grid;
-    grid-template-columns: repeat(var(--track-cols), minmax(250px, 1fr));
+    grid-template-columns: repeat(var(--track-cols), minmax(250px, 40%));
     row-gap: clamp(1.5rem, 8vw, 5rem);
-    padding-left: 1.5em;
+    justify-content: space-around;
     font-size: clamp(1rem, 4vw, 1.4rem);
+
+    div.album-block {
+      padding-bottom: 0.5em;
+      border-bottom: solid 2px var(--faded-blue);
+    }
+  }
+
+  @media (min-width: 1440px) {
+    ol {
+      padding-left: 0;
+    }
+  }
+
+  /* ensures that for that viewports up until desktops, the song display will be one column (easy scrolling) */
+  @media (max-width: 1200px) {
+    ol {
+      display: block;
+    }
   }
 
   /* next four media queries responsively change the # of columns that display tracks when a playlist is opened */
-  @media (max-width: 800px) {
+
+  /* former upper bound: 800px */
+  @media (max-width: 1200px) {
     :root {
       --track-cols: 1;
     }
   }
 
-  @media (800px <= width <= 1300px) {
+  /* former upper bound: 1300px */
+  @media (1201px <= width <= 1750px) {
     :root {
       --track-cols: 2;
     }
   }
 
-  @media (1300px <= width <= 1750px) {
-    :root {
-      --track-cols: 3;
-    }
-  }
-
-  @media (min-width: 1750px) {
+  @media (min-width: 1751px) {
     :root {
       --track-cols: 5;
     }
   }
 
   /* provides a little spacing between tracks on mobile */
-  @media (max-width: 800px) {
+  @media (max-width: 1200px) {
     li + li {
-      margin-top: 1.5rem;
+      margin-top: 3rem;
     }
-  }
-
-  .track-item {
-    max-width: 90%;
   }
 
   .track-item + .track-item {
