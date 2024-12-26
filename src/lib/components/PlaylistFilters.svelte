@@ -1,13 +1,13 @@
 <script lang="ts">
   import { goto, invalidate } from "$app/navigation";
+  import { store } from "$lib/state/store.svelte";
   const props = $props();
 
-  let viewingOrder = $state(props.viewingOrder);
   let selectedRange = $state(props.rangeLabel);
 
   async function refreshView(href: string) {
-    await goto(`/playlists/${href}?order=${viewingOrder}`);
-    await invalidate(`/playlists/${href}?order=${viewingOrder}`);
+    await goto(`/playlists/${href}?order=${store.viewingOrder}`);
+    await invalidate(`/playlists/${href}?order=${store.viewingOrder}`);
   }
 </script>
 
@@ -17,7 +17,7 @@
     <select
       name="playlist-order"
       id="playlist-order"
-      bind:value={viewingOrder}
+      bind:value={store.viewingOrder}
       onchange={() => refreshView(`${selectedRange}`)}
     >
       <option value="descending">Descending</option>

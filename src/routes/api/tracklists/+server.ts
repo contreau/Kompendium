@@ -7,7 +7,7 @@ import descendingPlaylists from "$lib/data/playlists-web-descending.json";
 
 export const GET = ({ url }) => {
   const id: number = Number(url.searchParams.get("id"));
-  const order: string | null = url.searchParams.get("order");
+  const order: string = url.searchParams.get("order") || "descending";
 
   if (order === "descending") {
     const playlists = descendingPlaylists as playlistJSON;

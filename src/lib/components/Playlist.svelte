@@ -4,30 +4,36 @@
   import AlbumSVG from "$lib/svg/AlbumSVG.svelte";
   import ArtistSVG from "$lib/svg/ArtistSVG.svelte";
   import type { Tracks } from "$lib/types";
+  import { store } from "$lib/state/store.svelte";
   const props = $props();
 
   let isOpen = $state(false); // open + close state of details element
   let isExpanded = $state(false); // expanded state of a given playlist
+  let tracklistPromise: Promise<Tracks[]> | [] = $state([]);
   let loadedTracklist = $state(false);
+  let currentViewingOrder = $state(props.viewingOrder);
 
+  // runs every time the viewingOrder (ascending/descending) dropdown is toggled
+  // necessary so that after the UI changes, the correct playlists can be fetched on hover
+  $effect(() => {
+    if (currentViewingOrder !== store.viewingOrder) {
+      if (loadedTracklist) {
+        loadedTracklist = false;
+        currentViewingOrder = store.viewingOrder;
+      }
+    }
+  });
+
+  // 'order' query string value should never be props.viewingOrder - because props don't update reactively/automatically by default. it needs to be the from the global state (store.viewingOrder), since it's being updated and tracked across components
   const retrieve_tracklist = async function (index: number) {
     if (!loadedTracklist) {
       const response = await fetch(
-        `/api/tracklists?id=${index}&order=${props.order}`
+        `/api/tracklists?id=${index}&order=${store.viewingOrder}`
       );
-      const tracks: Tracks = await response.json();
-      console.log(tracks);
+      tracklistPromise = await response.json();
       loadedTracklist = true;
     }
   };
-
-  // TODO:
-  // - use {#await} block around the <ol> to unpack the promise returned by the function retrieve_tracklist
-  // - properly rerender grid items when viewingOrder is toggled so that proper data is refetched on hover
-
-  // const tracks: Promise<Tracks | null> = $state(
-  //   retrieve_tracklist(props.index)
-  // );
 </script>
 
 <div
@@ -94,31 +100,33 @@
         View Songs
       {/if}
     </summary>
-    <ol>
-      {#each props.tracks as track}
-        <li>
-          <div class="track-item">
-            <a class="track-name" href={track.url} target="_blank"
-              >{track.name}</a
-            >
-          </div>
-          <div class="artist-block track-item">
-            <ArtistSVG />
-            {#each track.artists as artist, i}
-              {#if i === track.artists.length - 1}
-                {artist}
-              {:else}
-                {artist}, &nbsp;
-              {/if}
-            {/each}
-          </div>
-          <div class="album-block track-item">
-            <AlbumSVG />
-            {track.album}
-          </div>
-        </li>
-      {/each}
-    </ol>
+    {#await tracklistPromise then tracklist}
+      <ol>
+        {#each tracklist as track}
+          <li>
+            <div class="track-item">
+              <a class="track-name" href={track.url} target="_blank"
+                >{track.name}</a
+              >
+            </div>
+            <div class="artist-block track-item">
+              <ArtistSVG />
+              {#each track.artists as artist, i}
+                {#if i === track.artists.length - 1}
+                  {artist}
+                {:else}
+                  {artist}, &nbsp;
+                {/if}
+              {/each}
+            </div>
+            <div class="album-block track-item">
+              <AlbumSVG />
+              {track.album}
+            </div>
+          </li>
+        {/each}
+      </ol>
+    {/await}
   </details>
 </div>
 

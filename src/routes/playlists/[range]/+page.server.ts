@@ -10,7 +10,7 @@ export const load = async ({ params, url }) => {
   if (!currentRoute) {
     throw new Error("Invalid range");
   }
-  const viewingOrder = url.searchParams.get("order");
+  const viewingOrder: string = url.searchParams.get("order") || "descending";
 
   let chosenData;
   if (viewingOrder === "descending") {
