@@ -6,6 +6,19 @@
 
 <svelte:head>
   <title>Kompendium • In Memory of Konrad Rauscher</title>
+  <meta
+    name="description"
+    content="An interactive archive of Konrad Rauscher's 826 curated Spotify playlists."
+  />
+  <meta
+    property="og:description"
+    content="An interactive archive of Konrad Rauscher's 826 curated Spotify playlists."
+  />
+  <meta name="title" content="Kompendium • In Memory of Konrad Rauscher" />
+  <meta
+    property="og:title"
+    content="Kompendium • In Memory of Konrad Rauscher"
+  />
 </svelte:head>
 
 {#if browser && window.screen.availWidth <= 600}
