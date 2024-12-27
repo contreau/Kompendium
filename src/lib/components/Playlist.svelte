@@ -69,7 +69,9 @@
 >
   <div class="playlist--info">
     <h3>
-      <a href={props.url} id={props.name} target="__blank">{props.name}</a>
+      <a href={props.url} id="playlist{props.index}" target="__blank"
+        >{props.name}</a
+      >
     </h3>
     <div class="track-info">
       <p>
@@ -96,7 +98,7 @@
     ontoggle={() => {
       isExpanded = !isExpanded;
       if (isExpanded) {
-        location.hash = `#${props.name}`;
+        location.hash = `#playlist${props.index}`;
       }
     }}
   >
