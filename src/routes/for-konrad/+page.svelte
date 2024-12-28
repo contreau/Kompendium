@@ -1,6 +1,5 @@
 <script lang="ts">
-  import konradPortraitFull from "$lib/assets/konrad-portrait--375x500-min.jpg";
-  import konradPortraitMobile from "$lib/assets/konrad-portrait--225x300.jpg";
+  import konradPortraitBW from "$lib/assets/konrad-bw--430x570-min.jpg";
   import SecondaryHeader from "$lib/components/SecondaryHeader.svelte";
 </script>
 
@@ -17,12 +16,18 @@
 <section class="content-grid">
   <picture class="konrad-portrait">
     <source
-      srcset={konradPortraitMobile}
+      srcset={konradPortraitBW}
       media="(max-width: 700px)"
       width="225"
       height="300"
     />
-    <img src={konradPortraitFull} alt="Konrad" width="375" height="500" />
+    <img
+      src={konradPortraitBW}
+      alt="Konrad"
+      width="375"
+      height="500"
+      loading="eager"
+    />
   </picture>
 
   <div class="memoriam-content">
@@ -33,15 +38,17 @@
 
     <div class="memoriam-text">
       <p>
-        Between 2013 and 2024, Konrad Rauscher crafted 826 original public
+        Kompendium is the digital preservation of Konrad's immense musical
+        curation that he shared with countless friends, family and strangers
+        over 11 years. Between 2013 and 2024, he crafted 826 original public
         Spotify playlists totaling 59,903 songs.
       </p>
       <p>
-        Lorem ipsum odor amet, consectetuer adipiscing elit. Conubia curabitur
-        sociosqu at, gravida rutrum dictumst. Ridiculus lobortis viverra elit
-        erat eget eros nulla sollicitudin. Mattis facilisi dapibus; gravida nunc
-        egestas suscipit. At mus ante placerat rhoncus mattis cursus cras. Justo
-        libero amet fermentum fringilla mi mollis porttitor.
+        Nearly all of these playlists were crafted with a loving intent
+        surrounding the listener, the location, and the music itself. Many were
+        made to be directly paired with or for a particular person, group,
+        location, time of day, or emotive state, to create an experience that is
+        more than the sum of its parts.
       </p>
       <p>
         Aliquam ante sociosqu non; aliquet dui massa. Nisi donec vitae urna
@@ -89,7 +96,6 @@
     justify-self: center;
     img {
       border-radius: 10px;
-      filter: grayscale(1);
     }
   }
 
