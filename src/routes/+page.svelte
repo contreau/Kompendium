@@ -6,6 +6,8 @@
 
 <svelte:head>
   <title>Kompendium • In Memory of Konrad Rauscher</title>
+  <meta name="author" content="Conor Kelley" />
+
   <meta
     name="description"
     content="An interactive archive of Konrad Rauscher's 826 curated Spotify playlists."
