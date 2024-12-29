@@ -51,11 +51,21 @@
         more than the sum of its parts.
       </p>
       <p>
-        Aliquam ante sociosqu non; aliquet dui massa. Nisi donec vitae urna
-        iaculis et dui ac sed. Mauris sed primis tempor integer himenaeos dictum
-        sem donec scelerisque. Luctus faucibus ipsum magnis mattis urna felis
-        et. Quis auctor per tincidunt euismod pellentesque velit; tempus enim.
-        Praesent aliquam varius eget rhoncus hendrerit; odio augue lobortis.
+        <a
+          href="https://www.legacy.com/us/obituaries/legacyremembers/konrad-rauscher-obituary?id=56713019"
+          target="_blank">Rest in paradise, Konrad</a
+        >
+        <svg
+          class="heart"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          ><path
+            fill="#6d98fd"
+            d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"
+          /></svg
+        >
       </p>
     </div>
   </div>
@@ -90,6 +100,12 @@
 
   .memoriam-text p {
     color: #c8c8c8;
+  }
+
+  svg.heart {
+    vertical-align: -3px;
+    height: clamp(0.8rem, 5vw, 1.25rem);
+    width: clamp(0.8rem, 5vw, 1.25rem);
   }
 
   .konrad-portrait {
