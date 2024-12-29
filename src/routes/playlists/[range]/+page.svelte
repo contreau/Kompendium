@@ -23,20 +23,16 @@
     scrollButton_visible = window.scrollY >= 1000 ? true : false;
   }
 
-  function scroll_handler() {
-    const wl: Location = window.location;
-    if (wl.hash !== "") {
-      // scrolls to the top of the already opened playlist
-      const playlist_id = wl.hash.slice(9, wl.hash.length); // this cuts the 'playlist' prefix from the id found on the <h3>'s' <a> tag in Playist.svelte components
+  async function scroll_handler() {
+    if (location.hash.includes("playlist")) {
+      // scrolls to the top of the currently opened/viewed playlist
+      const playlist_id = location.hash.slice(9, location.hash.length); // this cuts the 'playlist' prefix from the id found on the <h3>'s' <a> tag in Playist.svelte components
       const temp = document.querySelector(`#playlist${playlist_id}`);
-      wl.hash = ""; // clears the hash in the url
+      location.hash = ""; // clears the hash in the url
       temp?.scrollIntoView();
-    } else if (wl.hash === "") {
-      // scrolls to top of page and closes any open playlists
+    } else if (location.hash === "") {
+      // scrolls to top of page
       scrollTo(0, 0);
-      document
-        .querySelectorAll("details[open]")
-        .forEach((pl) => pl.removeAttribute("open"));
     }
   }
 </script>

@@ -98,6 +98,7 @@
     ontoggle={() => {
       isExpanded = !isExpanded;
       if (isExpanded) {
+        // navigates to the clicked playlist anchor / updates the url
         location.hash = `#playlist${props.index}`;
       }
     }}
@@ -156,10 +157,9 @@
 
 <style>
   @media (min-width: 800px) {
-    .isExpanded {
+    /* .isExpanded {
       grid-column: 1 / -1;
-    }
-
+    } */
     .playlist:has(details[open]) {
       grid-column: 1 / -1;
     }
@@ -292,10 +292,16 @@
     summary {
       list-style: none;
       font-size: clamp(1rem, 6vw, 1.2rem);
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
       display: flex;
       align-items: center;
+      transition: color 0.2s;
+      &:hover,
+      &:hover > svg path {
+        color: #afafaf;
+        stroke: #afafaf;
+      }
     }
 
     summary::-webkit-details-marker {
@@ -313,5 +319,9 @@
 
   :global svg {
     margin-right: 0.2rem;
+  }
+
+  svg path {
+    transition: stroke 0.2s;
   }
 </style>
