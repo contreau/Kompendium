@@ -5,7 +5,7 @@
 <header>
   <h1>Kompendium</h1>
   <p class="byline">
-    By <a
+    For <a
       href="https://open.spotify.com/user/1261690341?si=d3127b482cc14c4b"
       target="_blank">Konrad Rauscher</a
     >
