@@ -75,6 +75,7 @@
   .wave-bar {
     width: 3px;
     background-color: var(--wave-blue);
+    will-change: filter;
     filter: drop-shadow(0 0 0.25rem var(--wave-blue));
     border-radius: 2px;
     transition: height 0.1s ease;

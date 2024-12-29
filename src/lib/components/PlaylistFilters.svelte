@@ -68,6 +68,7 @@
   }
 
   select {
+    font-family: "Nunito Sans", serif;
     background-color: var(--background);
     color: var(--text);
     padding: 0.7em 0.8em;
