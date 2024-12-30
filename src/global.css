@@ -174,7 +174,9 @@ a {
   transition: all 0.2s;
 }
 
-a:not(.site-links p > a):hover {
+a:not(.site-links p > a):hover,
+a:not(.site-links p > a):focus-visible {
+  outline: transparent;
   color: var(--text);
 }
 

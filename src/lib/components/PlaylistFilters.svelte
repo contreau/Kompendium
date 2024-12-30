@@ -6,6 +6,11 @@
   let selectedRange = $state(props.rangeLabel);
 
   async function refreshView(href: string) {
+    // closes any open playlists when view is toggled
+    const open_playlists = document.querySelectorAll("details[open]");
+    open_playlists.forEach((pl) => {
+      pl.removeAttribute("open");
+    });
     await goto(`/playlists/${href}?order=${store.viewingOrder}`);
     await invalidate(`/playlists/${href}?order=${store.viewingOrder}`);
   }
@@ -88,6 +93,10 @@
 
     &:hover {
       background-color: #1e1d20;
+    }
+    &:focus-visible {
+      background-color: #1e1d20;
+      outline: transparent;
     }
   }
 

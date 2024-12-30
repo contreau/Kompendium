@@ -179,6 +179,11 @@
     padding-inline: 1.5em;
     transition: 0.3s all;
 
+    &:focus-visible {
+      outline: transparent;
+      border-color: var(--accent);
+    }
+
     hr {
       margin-top: 1rem;
       margin-bottom: 1rem;
@@ -301,6 +306,10 @@
       &:hover > svg path {
         color: #afafaf;
         stroke: #afafaf;
+      }
+      &:focus-visible {
+        outline: solid 1.5px var(--accent);
+        border-radius: 5px;
       }
     }
 
