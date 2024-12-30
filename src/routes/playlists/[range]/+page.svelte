@@ -91,8 +91,8 @@
     position: sticky;
     left: 92.5%;
     bottom: 6.25rem;
-    min-height: clamp(50px, 6vw, 60px);
-    min-width: clamp(50px, 6vw, 60px);
+    min-height: clamp(40px, 6vw, 60px);
+    min-width: clamp(40px, 6vw, 60px);
     display: grid;
     place-items: center;
     cursor: pointer;
