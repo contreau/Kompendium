@@ -47,7 +47,7 @@
 
   <nav class="site-links">
     <p><a href="/playlists/1-100?order=descending">Playlists</a></p>
-    <p><a href="/for-konrad">For Konrad</a></p>
+    <p><a href="/about">About</a></p>
   </nav>
 
   <!-- WAVE VISUAL -->

@@ -4,11 +4,11 @@
 </script>
 
 <svelte:head>
-  <title>Kompendium • For Konrad</title>
+  <title>Kompendium • About</title>
 </svelte:head>
 
 <SecondaryHeader
-  heading1="For Konrad"
+  heading1="About"
   secondPage="Playlists"
   secondPageSlug="playlists/1-100?order=descending"
 />

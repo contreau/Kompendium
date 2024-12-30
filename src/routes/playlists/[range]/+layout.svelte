@@ -9,8 +9,8 @@
 
 <SecondaryHeader
   heading1="Playlists"
-  secondPage="For Konrad"
-  secondPageSlug="for-konrad"
+  secondPage="About"
+  secondPageSlug="about"
 />
 
 <main>
