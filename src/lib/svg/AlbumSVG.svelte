@@ -15,6 +15,8 @@
 
 <style>
   svg {
-    vertical-align: -2px;
+    vertical-align: -4px;
+    width: clamp(1rem, 4.75vw, 1.5rem);
+    height: clamp(1rem, 4.75vw, 1.5rem);
   }
 </style>
