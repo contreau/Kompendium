@@ -1,13 +1,17 @@
-<script>
+<script lang="ts">
   const props = $props();
+  if (props.secondPageSlug.includes("playlists")) {
+  }
 </script>
 
 <header>
   <h1>{props.heading1}</h1>
   <nav>
     <p class="nav-item">
-      <a href="/">Kompendium</a><span class="separator">|</span><a
-        href="/{props.secondPageSlug}">{props.secondPage}</a
+      <a data-sveltekit-preload-data href="/">Kompendium</a><span
+        class="separator">|</span
+      ><a data-sveltekit-preload-code="viewport" href="/{props.secondPageSlug}"
+        >{props.secondPage}</a
       >
     </p>
   </nav>

@@ -13,26 +13,57 @@
   let tracklistPromise: Promise<Tracks[]> | [] = $state([]);
   let loadedTracklist = $state(false);
   let currentViewingOrder = $state(props.viewingOrder);
+  let currentPlaylistRange = $state(props.playlistRange);
 
-  // runs every time the viewingOrder (ascending/descending) dropdown is toggled
+  // runs every time the <select> inputs are toggled
   // necessary so that after the UI changes, the correct playlists can be fetched on hover
   $effect(() => {
+    // for viewingOrder selection
     if (currentViewingOrder !== store.viewingOrder) {
       if (loadedTracklist) {
         loadedTracklist = false;
         currentViewingOrder = store.viewingOrder;
       }
     }
+    // for playlistRange selection
+    if (currentPlaylistRange !== store.playlistRange) {
+      if (loadedTracklist) {
+        loadedTracklist = false;
+        currentPlaylistRange = store.playlistRange;
+      }
+    }
   });
+
+  // playlists should be saved to sessionStorage when loaded, and any subsequent loads of the same thing should retrieve from sessionStorage
+  async function check_sessionStorage(index: number): Promise<Tracks[] | []> {
+    const stored = sessionStorage.getItem(`${store.viewingOrder}${index}`);
+    const data = stored !== null ? (JSON.parse(stored) as Tracks[]) : [];
+    return data;
+  }
 
   // 'order' query string value should never be props.viewingOrder - because props don't update reactively/automatically by default. it needs to be the from the global state (store.viewingOrder), since it's being updated and tracked across components
   async function retrieve_tracklist(index: number) {
     if (!loadedTracklist) {
-      const response = await fetch(
-        `/api/tracklists?id=${index}&order=${store.viewingOrder}`
-      );
-      tracklistPromise = await response.json();
-      loadedTracklist = true;
+      // checks sessionStorage first
+      const storedTracklist = await check_sessionStorage(index);
+      if (storedTracklist.length !== 0) {
+        tracklistPromise = new Promise((res) => res(storedTracklist));
+        loadedTracklist = true;
+        // console.log("retrieved from storage!");
+      } else {
+        // retrieves from api otherwise
+        const response = await fetch(
+          `/api/tracklists?id=${index}&order=${store.viewingOrder}`
+        );
+        const tracklist: Tracks[] = await response.json();
+        tracklistPromise = new Promise((res) => res(tracklist));
+        loadedTracklist = true;
+        sessionStorage.setItem(
+          `${store.viewingOrder}${index}`,
+          JSON.stringify(tracklist)
+        );
+        // console.log("retrieved from api.");
+      }
     }
   }
 
@@ -238,6 +269,11 @@
       padding-bottom: 0.5em;
       border-bottom: solid 2px var(--faded-blue);
     }
+  }
+
+  .artist-block,
+  .album-block {
+    font-weight: 300;
   }
 
   @media (min-width: 1440px) {

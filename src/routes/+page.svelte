@@ -43,8 +43,15 @@
   </header>
 
   <nav class="site-links">
-    <p><a href="/playlists/1-100?order=descending">Playlists</a></p>
-    <p><a href="/in-memoriam">In Memoriam</a></p>
+    <p>
+      <a
+        data-sveltekit-preload-code="viewport"
+        href="/playlists/1-100?order=descending">Playlists</a
+      >
+    </p>
+    <p data-sveltekit-preload-data>
+      <a href="/in-memoriam">In Memoriam</a>
+    </p>
   </nav>
 
   <!-- WAVE VISUAL -->

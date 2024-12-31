@@ -3,27 +3,27 @@
   import { store } from "$lib/state/store.svelte";
   const props = $props();
 
-  let selectedRange = $state(props.rangeLabel);
-
-  async function refreshView(href: string) {
+  async function refreshView() {
     // closes any open playlists when view is toggled
     const open_playlists = document.querySelectorAll("details[open]");
     open_playlists.forEach((pl) => {
       pl.removeAttribute("open");
     });
-    await goto(`/playlists/${href}?order=${store.viewingOrder}`);
-    await invalidate(`/playlists/${href}?order=${store.viewingOrder}`);
+    await goto(`/playlists/${store.playlistRange}?order=${store.viewingOrder}`);
+    await invalidate(
+      `/playlists/${store.playlistRange}?order=${store.viewingOrder}`
+    );
   }
 </script>
 
 <section class="filters">
-  <h3>Showing Playlists <span>{selectedRange}</span></h3>
+  <h3>Showing Playlists <span>{store.playlistRange}</span></h3>
   <div class="controls">
     <select
       name="playlist-order"
       id="playlist-order"
       bind:value={store.viewingOrder}
-      onchange={() => refreshView(`${selectedRange}`)}
+      onchange={refreshView}
     >
       <option value="descending">Descending</option>
       <option value="ascending">Ascending</option>
@@ -31,8 +31,8 @@
     <select
       name="playlist-ranges"
       id="playlist-ranges"
-      bind:value={selectedRange}
-      onchange={() => refreshView(`${selectedRange}`)}
+      bind:value={store.playlistRange}
+      onchange={refreshView}
     >
       <option value="1-100">1-100</option>
       <option value="101-200">101-200</option>

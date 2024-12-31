@@ -107,6 +107,7 @@
 
   .memoriam-text p {
     color: #c8c8c8;
+    font-weight: 300;
   }
 
   svg.heart {

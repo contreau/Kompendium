@@ -8,9 +8,9 @@
   // Playlist component prop (reactive)
   const playlists = $derived(data["playlists"]);
 
-  // PlaylistFilters component props (currentPageRoute is reactive)
-  const currentPageRoute = $derived(data["currentPageRoute"]);
-  store.viewingOrder = data["viewingOrder"]; // sets the viewingOrder as global state
+  // Sets the values for both playlistRange and viewingOrder in the global state (store.svelte.ts)
+  store.playlistRange = data["currentPageRoute"];
+  store.viewingOrder = data["viewingOrder"];
 
   // Scroll button's opacity state
   let scrollButton_visible = $state(false);
@@ -39,18 +39,19 @@
 
 <svelte:window onscroll={reveal_scrollButton} />
 
-<PlaylistFilters rangeLabel={`${currentPageRoute}`} />
+<PlaylistFilters />
 
 <section class="content-grid">
   {#each playlists as playlist, index}
     <Playlist
-      index={calculate_index(currentPageRoute, index)}
+      index={calculate_index(store.playlistRange, index)}
       name={playlist.name}
       url={playlist.url}
       trackCount={playlist.trackCount}
       description={playlist.description}
       dateCreated={playlist.dateCreated}
       viewingOrder={store.viewingOrder}
+      playlistRange={store.playlistRange}
     />
   {/each}
 </section>
