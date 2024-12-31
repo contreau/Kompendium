@@ -157,9 +157,9 @@
 
 <style>
   @media (min-width: 800px) {
-    /* .isExpanded {
+    .isExpanded {
       grid-column: 1 / -1;
-    } */
+    }
     .playlist:has(details[open]) {
       grid-column: 1 / -1;
     }
@@ -253,25 +253,17 @@
     }
   }
 
-  /* next four media queries responsively change the # of columns that display tracks when a playlist is opened */
+  /* next few media queries responsively change the # of columns that display tracks when a playlist is opened */
 
-  /* former upper bound: 800px */
   @media (max-width: 1200px) {
     :root {
       --track-cols: 1;
     }
   }
 
-  /* former upper bound: 1300px */
-  @media (1201px <= width <= 1750px) {
+  @media (min-width: 1201px) {
     :root {
       --track-cols: 2;
-    }
-  }
-
-  @media (min-width: 1751px) {
-    :root {
-      --track-cols: 5;
     }
   }
 

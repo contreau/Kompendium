@@ -1,14 +1,15 @@
 <script lang="ts">
   import konradPortraitBW from "$lib/assets/konrad-bw--430x570-min.jpg";
+  import konradPortraitLarge from "$lib/assets/konrad-bw--603x800-min.jpg";
   import SecondaryHeader from "$lib/components/SecondaryHeader.svelte";
 </script>
 
 <svelte:head>
-  <title>Kompendium • About</title>
+  <title>Kompendium • In Memoriam</title>
 </svelte:head>
 
 <SecondaryHeader
-  heading1="About"
+  heading1="In Memoriam"
   secondPage="Playlists"
   secondPageSlug="playlists/1-100?order=descending"
 />
@@ -20,6 +21,12 @@
       media="(max-width: 700px)"
       width="225"
       height="300"
+    />
+    <source
+      srcset={konradPortraitLarge}
+      media="(min-width: 1600px)"
+      width="603"
+      height="800"
     />
     <img
       src={konradPortraitBW}
@@ -90,11 +97,11 @@
     p.lifespan {
       font-weight: 700;
       margin: 0.2rem 0;
-      font-size: clamp(0.8rem, 5.5vw, 1.25rem);
+      font-size: clamp(1.15rem, 1.6vw, 1.5rem);
     }
 
     p:not(.lifespan) {
-      font-size: clamp(0.8rem, 5vw, 1.25rem);
+      font-size: clamp(1.15rem, 1.6vw, 1.5rem);
     }
   }
 
@@ -104,8 +111,8 @@
 
   svg.heart {
     vertical-align: -3px;
-    height: clamp(0.8rem, 5vw, 1.25rem);
-    width: clamp(0.8rem, 5vw, 1.25rem);
+    height: clamp(1.1rem, 1.5vw, 1.5rem);
+    width: clamp(1.1rem, 1.5vw, 1.5rem);
   }
 
   .konrad-portrait {
@@ -115,7 +122,7 @@
     }
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 770px) {
     .content-grid {
       grid-template-columns: 1fr;
       margin-top: 2rem;
@@ -131,11 +138,26 @@
     }
   }
 
-  @media (700px <= width <= 1270px) {
+  @media (771px <= width <= 1270px) {
     .content-grid {
       grid-template-columns: 45% 50%;
       gap: 5%;
       align-items: start;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    .memoriam-content {
+      h3 {
+        font-size: clamp(2rem, 8vw, 2.7rem);
+      }
+      p.lifespan {
+        font-size: clamp(1.6rem, 1.6vw, 2rem);
+      }
+
+      p:not(.lifespan) {
+        font-size: clamp(1.6rem, 1.6vw, 1.8rem);
+      }
     }
   }
 </style>

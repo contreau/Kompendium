@@ -9,8 +9,8 @@
 
 <SecondaryHeader
   heading1="Playlists"
-  secondPage="About"
-  secondPageSlug="about"
+  secondPage="In Memoriam"
+  secondPageSlug="in-memoriam"
 />
 
 <main>
@@ -34,6 +34,7 @@
   @media (min-width: 1300px) {
     :root {
       --cols: 3;
+      --track-cols: 4;
     }
   }
 </style>

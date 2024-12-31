@@ -16,7 +16,7 @@
 
 <nav class="site-links">
   <p><a href="/playlists/1-100">Playlists</a></p>
-  <p><a href="/about">For Konrad</a></p>
+  <p><a href="/in-memoriam">In Memoriam</a></p>
 </nav>
 
 <style>
@@ -57,7 +57,7 @@
 
     a {
       display: inline-block;
-      min-width: 227px;
+      min-width: 250px;
       text-decoration: none;
       color: var(--text);
       padding: 0.35em 2em;

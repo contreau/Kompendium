@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-  <title>Kompendium • In Memory of Konrad Rauscher</title>
+  <title>Kompendium • For Konrad Rauscher</title>
   <meta name="author" content="Conor Kelley" />
 
   <meta
@@ -16,11 +16,8 @@
     property="og:description"
     content="An interactive archive of Konrad Rauscher's 826 curated Spotify playlists."
   />
-  <meta name="title" content="Kompendium • In Memory of Konrad Rauscher" />
-  <meta
-    property="og:title"
-    content="Kompendium • In Memory of Konrad Rauscher"
-  />
+  <meta name="title" content="Kompendium • For Konrad Rauscher" />
+  <meta property="og:title" content="Kompendium • For Konrad Rauscher" />
 </svelte:head>
 
 {#if browser && window.screen.availWidth <= 600}
@@ -47,7 +44,7 @@
 
   <nav class="site-links">
     <p><a href="/playlists/1-100?order=descending">Playlists</a></p>
-    <p><a href="/about">About</a></p>
+    <p><a href="/in-memoriam">In Memoriam</a></p>
   </nav>
 
   <!-- WAVE VISUAL -->
@@ -95,6 +92,8 @@
 
     a {
       text-decoration: none;
+      display: inline-block;
+      min-width: 330px;
       color: var(--text);
       padding: 0.35em 2em;
       border-left: solid 2.25px var(--text);
