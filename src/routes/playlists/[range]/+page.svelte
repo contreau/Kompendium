@@ -91,8 +91,8 @@
     position: sticky;
     left: 92.5%;
     bottom: 6.25rem;
-    min-height: clamp(40px, 6vw, 60px);
-    min-width: clamp(40px, 6vw, 60px);
+    height: 60px;
+    width: 60px;
     display: grid;
     place-items: center;
     cursor: pointer;
@@ -109,8 +109,8 @@
 
     svg {
       margin: 0;
-      width: clamp(30px, 6vw, 40px);
-      height: clamp(30px, 6vw, 40px);
+      width: 40px;
+      height: 40px;
     }
   }
 
@@ -121,6 +121,18 @@
   @media (max-width: 1200px) {
     .sticky-button {
       bottom: 2rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .sticky-button {
+      min-height: 15px;
+      min-width: 15px;
+
+      svg {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 </style>

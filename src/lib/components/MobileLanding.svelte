@@ -16,7 +16,7 @@
 
 <nav class="site-links">
   <p><a href="/playlists/1-100">Playlists</a></p>
-  <p><a href="/for-konrad">For Konrad</a></p>
+  <p><a href="/about">For Konrad</a></p>
 </nav>
 
 <style>
