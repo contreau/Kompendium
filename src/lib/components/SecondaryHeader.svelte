@@ -10,7 +10,7 @@
     <p class="nav-item">
       <a data-sveltekit-preload-data href="/">Kompendium</a><span
         class="separator">|</span
-      ><a data-sveltekit-preload-code="viewport" href="/{props.secondPageSlug}"
+      ><a data-sveltekit-preload-data href="/{props.secondPageSlug}"
         >{props.secondPage}</a
       >
     </p>
