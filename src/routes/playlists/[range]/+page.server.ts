@@ -20,10 +20,17 @@ export const load = async ({ params, url }) => {
   }
 
   const [start, end] = currentRoute.range.split("-").map(Number);
-  const playlists: playlistJSON = (chosenData as playlistJSON).slice(
-    start - 1,
-    end
-  );
+  const playlists: playlistJSON = (chosenData as playlistJSON)
+    .slice(start - 1, end)
+    .map((pl) => {
+      return {
+        name: pl.name,
+        dateCreated: pl.dateCreated,
+        description: pl.description,
+        url: pl.url,
+        trackCount: pl.trackCount,
+      };
+    });
 
   return {
     playlists,

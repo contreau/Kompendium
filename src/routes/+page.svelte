@@ -44,9 +44,8 @@
 
   <nav class="site-links">
     <p>
-      <a
-        data-sveltekit-preload-code="viewport"
-        href="/playlists/1-100?order=descending">Playlists</a
+      <a data-sveltekit-preload-data href="/playlists/1-100?order=descending"
+        >Playlists</a
       >
     </p>
     <p data-sveltekit-preload-data>

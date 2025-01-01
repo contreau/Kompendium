@@ -2,13 +2,11 @@ export type playlistJSON = Array<Playlist>;
 
 interface Playlist {
   name: string;
-  followers: number;
   dateCreated: string;
   description: string | undefined;
   url: string;
-  image: string;
   trackCount: number;
-  tracks: Array<Tracks>;
+  tracks?: Array<Tracks>;
 }
 
 export interface Tracks {
