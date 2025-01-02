@@ -12,10 +12,9 @@
   </p>
 </header>
 
-<Wave />
-
 <nav class="site-links">
   <p><a href="/playlists/1-100">Playlists</a></p>
+  <Wave margin="0" />
   <p><a href="/in-memoriam">In Memoriam</a></p>
 </nav>
 
@@ -57,7 +56,7 @@
 
     a {
       display: inline-block;
-      min-width: 250px;
+      min-width: 275px;
       text-decoration: none;
       color: var(--text);
       padding: 0.35em 2em;

@@ -20,7 +20,7 @@
   <meta property="og:title" content="Kompendium • For Konrad Rauscher" />
 </svelte:head>
 
-{#if browser && window.screen.availWidth <= 600}
+{#if browser && window.screen.availWidth <= 851}
   <MobileLanding />
 {:else}
   <header>

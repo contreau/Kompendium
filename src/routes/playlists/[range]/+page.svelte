@@ -125,7 +125,7 @@
     }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 850px) {
     .sticky-button {
       min-height: 15px;
       min-width: 15px;

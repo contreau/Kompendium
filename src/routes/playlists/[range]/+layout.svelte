@@ -19,13 +19,13 @@
 
 <style>
   /* these media queries responsively change the # of playlists that are displayed in the grid */
-  @media (565px <= width <= 800px) {
+  @media (565px <= width <= 850px) {
     :root {
       --cols: 1;
     }
   }
 
-  @media (800px <= width <= 1300px) {
+  @media (851px <= width <= 1300px) {
     :root {
       --cols: 2;
     }

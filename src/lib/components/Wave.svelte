@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { browser } from "$app/environment";
+  const props = $props();
 
   function size_wave() {
     // smallest number of wave bars: 20 at 320px viewport
@@ -54,7 +55,10 @@
   });
 </script>
 
-<section class="wave-container">
+<section
+  class="wave-container"
+  style="margin-top: {props.margin}rem; margin-bottom: {props.margin}rem"
+>
   {#each wave_count}
     <div class="wave-bar"></div>
   {/each}
@@ -62,8 +66,6 @@
 
 <style>
   .wave-container {
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
     max-width: 100%;
     min-height: 150px;
     background-color: var(--bg-color);

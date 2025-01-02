@@ -120,7 +120,7 @@
     }
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 850px) {
     section.filters {
       flex-direction: column;
       gap: 1.5rem;
