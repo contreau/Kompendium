@@ -1,27 +1,30 @@
 <script>
   import Wave from "./Wave.svelte";
+  // TODO: make main content centered - rework nav styling
 </script>
 
 <header>
   <h1>Kompendium</h1>
-  <p class="byline">
+  <!-- <p class="byline">
     For <a
       href="https://open.spotify.com/user/1261690341?si=d3127b482cc14c4b"
       target="_blank">Konrad Rauscher</a
     >
-  </p>
+  </p> -->
 </header>
+
+<Wave margin="0" />
 
 <nav class="site-links">
   <p><a href="/playlists/1-100">Playlists</a></p>
-  <Wave margin="0" />
+
   <p><a href="/in-memoriam">In Memoriam</a></p>
 </nav>
 
 <style>
-  header {
-    border-bottom: solid 2px var(--faded-blue);
-  }
+  /* header {
+    border-bottom: solid 2px var(--faded-pink);
+  } */
 
   h1 {
     font-size: clamp(2.7rem, 10vw, var(--h1-font-size));
@@ -60,8 +63,8 @@
       text-decoration: none;
       color: var(--text);
       padding: 0.35em 2em;
-      border-left: solid 2.25px var(--text);
-      border-right: solid 2.25px var(--text);
+      border-left: solid 2.25px var(--accent);
+      border-right: solid 2.25px var(--accent);
       border-radius: 0.5px;
       &:hover {
         color: var(--accent);

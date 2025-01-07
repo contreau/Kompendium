@@ -33,6 +33,18 @@
     const maxHeight = 100;
     const speed = 0.05;
     let time = 0;
+    const colors = [
+      "#f72585",
+      "#b5179e",
+      "#7209b7",
+      "#560bad",
+      "#480ca8",
+      "#3a0ca3",
+      "#3f37c9",
+      "#4361ee",
+      "#4895ef",
+      "#4cc9f0",
+    ];
 
     // Animation function using requestAnimationFrame
     function animate() {
@@ -44,6 +56,13 @@
           minHeight +
           ((Math.sin(time + index * 0.3) + 1) * (maxHeight - minHeight)) / 2;
         bar.style.height = `${height}px`;
+        if (index > 9) {
+          bar.style.backgroundColor = colors[index % 10];
+          bar.style.filter = `drop-shadow(0 0 0.25rem ${colors[index % 10]})`;
+        } else {
+          bar.style.backgroundColor = colors[index];
+          bar.style.filter = `drop-shadow(0 0 0.25rem ${colors[index]})`;
+        }
       });
 
       // Request the next frame
@@ -66,6 +85,17 @@
 
 <style>
   .wave-container {
+    /* rainbow color variables */
+    --c0: #f72585;
+    --c1: #b5179e;
+    --c2: #7209b7;
+    --c3: #560bad;
+    --c4: #480ca8;
+    --c5: #3a0ca3;
+    --c6: #3f37c9;
+    --c7: #4361ee;
+    --c8: #4895ef;
+    --c9: #4cc9f0;
     max-width: 100%;
     min-height: 150px;
     background-color: var(--bg-color);

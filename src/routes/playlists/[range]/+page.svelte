@@ -105,7 +105,7 @@
       opacity 0.4s;
 
     &:hover {
-      background-color: #406bce;
+      background-color: #cf206e;
     }
 
     svg {

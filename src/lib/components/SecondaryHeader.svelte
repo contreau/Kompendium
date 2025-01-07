@@ -19,7 +19,7 @@
 
 <style>
   header {
-    border-bottom: solid 2px var(--faded-blue);
+    border-bottom: solid 2px var(--faded-pink);
     display: flex;
     align-items: center;
     justify-content: space-between;

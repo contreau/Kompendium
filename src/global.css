@@ -128,9 +128,12 @@
   --background: #0e0d11;
   --primary: #8f93db;
   --secondary: #2a2a83;
-  --accent: #6d98fd;
+  --old-accent: #6d98fd;
+  --accent: #f72585;
+  --icon-purp: #5770e9;
   --wave-blue: #004bfa;
   --faded-blue: #6290fc46;
+  --faded-pink: #f7258458;
   --cols: auto-fit;
   --track-cols: auto-fit;
   --h1-font-size: 6.5rem;
@@ -183,7 +186,7 @@ a:not(.site-links p > a):focus-visible {
 .separator {
   margin-left: 0.75rem;
   margin-right: 0.75rem;
-  color: var(--faded-blue);
+  color: var(--faded-pink);
 }
 
 @media (max-width: 700px) {

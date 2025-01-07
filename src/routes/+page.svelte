@@ -80,7 +80,7 @@
   }
 
   header {
-    border-bottom: solid 2px var(--faded-blue);
+    border-bottom: solid 2px var(--faded-pink);
   }
 
   nav {
@@ -102,13 +102,13 @@
       min-width: 330px;
       color: var(--text);
       padding: 0.35em 2em;
-      border-left: solid 2.25px var(--text);
-      border-right: solid 2.25px var(--text);
+      border-left: solid 2.25px var(--accent);
+      border-right: solid 2.25px var(--accent);
       border-radius: 0.5px;
       &:hover {
         color: var(--accent);
-        border-left-color: var(--accent);
-        border-right-color: var(--accent);
+        border-left-color: var(--text);
+        border-right-color: var(--text);
       }
     }
   }
