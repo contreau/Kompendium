@@ -1,16 +1,9 @@
 <script>
   import Wave from "./Wave.svelte";
-  // TODO: make main content centered - rework nav styling
 </script>
 
 <header>
   <h1>Kompendium</h1>
-  <!-- <p class="byline">
-    For <a
-      href="https://open.spotify.com/user/1261690341?si=d3127b482cc14c4b"
-      target="_blank">Konrad Rauscher</a
-    >
-  </p> -->
 </header>
 
 <Wave margin="0" />
@@ -22,10 +15,6 @@
 </nav>
 
 <style>
-  /* header {
-    border-bottom: solid 2px var(--faded-pink);
-  } */
-
   h1 {
     font-size: clamp(2.7rem, 10vw, var(--h1-font-size));
     text-align: center;
@@ -33,14 +22,6 @@
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
     letter-spacing: 2.5px;
-  }
-
-  .byline {
-    font-size: clamp(1.25rem, 4vw, 1.65rem);
-    font-weight: 450;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    text-align: center;
   }
 
   nav {
@@ -71,6 +52,12 @@
         border-left-color: var(--accent);
         border-right-color: var(--accent);
       }
+    }
+  }
+
+  @media (740px <= width <= 850px) {
+    nav {
+      grid-template-columns: 1fr 1fr;
     }
   }
 </style>

@@ -21,7 +21,9 @@
 </svelte:head>
 
 {#if browser && window.screen.availWidth <= 851}
-  <MobileLanding />
+  <div class="centering-wrapper">
+    <MobileLanding />
+  </div>
 {:else}
   <header>
     <h1>Kompendium</h1>
@@ -42,22 +44,35 @@
     </div>
   </header>
 
-  <nav class="site-links">
-    <p>
-      <a data-sveltekit-preload-data href="/playlists/1-100?order=descending"
-        >Playlists</a
-      >
-    </p>
-    <p data-sveltekit-preload-data>
-      <a href="/in-memoriam">In Memoriam</a>
-    </p>
-  </nav>
-
-  <!-- WAVE VISUAL -->
-  <Wave />
+  <div class="responsive-wrapper">
+    <nav class="site-links">
+      <p>
+        <a data-sveltekit-preload-data href="/playlists/1-100?order=descending"
+          >Playlists</a
+        >
+      </p>
+      <p data-sveltekit-preload-data>
+        <a href="/in-memoriam">In Memoriam</a>
+      </p>
+    </nav>
+    <!-- WAVE VISUAL -->
+    <Wave />
+  </div>
 {/if}
 
 <style>
+  @media (min-width: 2100px) {
+    .responsive-wrapper {
+      margin-top: 10%;
+    }
+  }
+
+  .centering-wrapper {
+    /* centers landing page on phone and tablet */
+    min-height: 100vh;
+    align-content: center;
+  }
+
   .subtitle-container {
     display: flex;
     align-items: center;
