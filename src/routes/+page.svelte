@@ -25,52 +25,68 @@
     <MobileLanding />
   </div>
 {:else}
-  <header>
-    <h1>Kompendium</h1>
-
-    <div class="subtitle-container">
-      <p class="subtitle-item byline">
-        For <a
-          href="https://open.spotify.com/user/1261690341?si=d3127b482cc14c4b"
-          target="_blank">Konrad Rauscher</a
-        >
-      </p>
-      <div class="separator">|</div>
-      <p class="subtitle-item"><span>11</span> Years</p>
-      <div class="separator">|</div>
-      <p class="subtitle-item"><span>826</span> Original Playlists</p>
-      <div class="separator">|</div>
-      <p class="subtitle-item"><span>59,903</span> Songs</p>
+  <div class="large-device-visible">
+    <header>
+      <h1>Kompendium</h1>
+      <div class="subtitle-container">
+        <p class="subtitle-item byline">
+          For <a
+            href="https://open.spotify.com/user/1261690341?si=d3127b482cc14c4b"
+            target="_blank">Konrad Rauscher</a
+          >
+        </p>
+        <div class="separator">|</div>
+        <p class="subtitle-item"><span>11</span> Years</p>
+        <div class="separator">|</div>
+        <p class="subtitle-item"><span>826</span> Original Playlists</p>
+        <div class="separator">|</div>
+        <p class="subtitle-item"><span>59,903</span> Songs</p>
+      </div>
+    </header>
+    <div class="responsive-wrapper">
+      <nav class="site-links">
+        <p>
+          <a
+            data-sveltekit-preload-data
+            href="/playlists/1-100?order=descending">Playlists</a
+          >
+        </p>
+        <p data-sveltekit-preload-data>
+          <a href="/in-memoriam">In Memoriam</a>
+        </p>
+      </nav>
+      <!-- WAVE VISUAL -->
+      <Wave />
     </div>
-  </header>
-
-  <div class="responsive-wrapper">
-    <nav class="site-links">
-      <p>
-        <a data-sveltekit-preload-data href="/playlists/1-100?order=descending"
-          >Playlists</a
-        >
-      </p>
-      <p data-sveltekit-preload-data>
-        <a href="/in-memoriam">In Memoriam</a>
-      </p>
-    </nav>
-    <!-- WAVE VISUAL -->
-    <Wave />
   </div>
 {/if}
 
 <style>
+  @media (max-width: 851px) {
+    .large-device-visible {
+      display: none;
+    }
+  }
+
   @media (min-width: 2100px) {
     .responsive-wrapper {
       margin-top: 10%;
     }
   }
 
+  @keyframes fadeIn {
+    100% {
+      opacity: 1;
+    }
+  }
+
   .centering-wrapper {
     /* centers landing page on phone and tablet */
+    opacity: 0;
+    transition: opacity;
     min-height: 100vh;
     align-content: center;
+    animation: fadeIn 0.75s forwards;
   }
 
   .subtitle-container {
