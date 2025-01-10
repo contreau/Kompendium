@@ -6,6 +6,10 @@
 
 <svelte:head>
   <title>Kompendium • In Memoriam</title>
+  <meta property="og:title" content="Kompendium • In Memoriam" />
+  <meta property="og:url" content="https://komp3nd1um.app/in-memoriam" />
+  <meta name="description" content="In Memory of Konrad Rauscher." />
+  <meta property="og:description" content="In Memory of Konrad Rauscher." />
 </svelte:head>
 
 <SecondaryHeader

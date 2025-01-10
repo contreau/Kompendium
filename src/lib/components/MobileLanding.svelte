@@ -19,7 +19,7 @@
     font-size: clamp(2.7rem, 10vw, var(--h1-font-size));
     text-align: center;
     font-weight: 650;
-    margin-top: 0.25rem;
+    margin-top: 0rem;
     margin-bottom: 0.25rem;
     letter-spacing: 2.5px;
   }

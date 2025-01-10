@@ -18,6 +18,7 @@
   />
   <meta name="title" content="Kompendium • For Konrad Rauscher" />
   <meta property="og:title" content="Kompendium • For Konrad Rauscher" />
+  <meta property="og:url" content="https://komp3nd1um.app" />
 </svelte:head>
 
 {#if browser && window.screen.availWidth <= 851}
