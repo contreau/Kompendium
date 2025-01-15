@@ -39,22 +39,24 @@
 
 <svelte:window onscroll={reveal_scrollButton} />
 
-<PlaylistFilters />
+<div class="fade-in">
+  <PlaylistFilters />
 
-<section class="content-grid">
-  {#each playlists as playlist, index}
-    <Playlist
-      index={calculate_index(store.playlistRange, index)}
-      name={playlist.name}
-      url={playlist.url}
-      trackCount={playlist.trackCount}
-      description={playlist.description}
-      dateCreated={playlist.dateCreated}
-      viewingOrder={store.viewingOrder}
-      playlistRange={store.playlistRange}
-    />
-  {/each}
-</section>
+  <section class="content-grid">
+    {#each playlists as playlist, index}
+      <Playlist
+        index={calculate_index(store.playlistRange, index)}
+        name={playlist.name}
+        url={playlist.url}
+        trackCount={playlist.trackCount}
+        description={playlist.description}
+        dateCreated={playlist.dateCreated}
+        viewingOrder={store.viewingOrder}
+        playlistRange={store.playlistRange}
+      />
+    {/each}
+  </section>
+</div>
 
 <button
   aria-label="Scroll to top of page"

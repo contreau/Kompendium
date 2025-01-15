@@ -44,7 +44,7 @@
         <p class="subtitle-item"><span>59,903</span> Songs</p>
       </div>
     </header>
-    <div class="responsive-wrapper">
+    <div class="responsive-wrapper fade-in">
       <nav class="site-links">
         <p>
           <a
@@ -72,12 +72,6 @@
   @media (min-width: 2100px) {
     .responsive-wrapper {
       margin-top: 10%;
-    }
-  }
-
-  @keyframes fadeIn {
-    100% {
-      opacity: 1;
     }
   }
 

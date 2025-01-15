@@ -199,3 +199,15 @@ main {
   margin-bottom: 2.5rem;
   position: relative;
 }
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity;
+  animation: fadeIn 0.75s forwards;
+}

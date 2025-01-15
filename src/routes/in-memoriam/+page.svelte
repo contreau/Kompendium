@@ -18,7 +18,7 @@
   secondPageSlug="playlists/1-100?order=descending"
 />
 
-<section class="content-grid">
+<section class="content-grid fade-in">
   <picture class="konrad-portrait">
     <source
       srcset={konradPortraitBW}
