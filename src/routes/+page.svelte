@@ -2,6 +2,10 @@
   import Wave from "$lib/components/Wave.svelte";
   import MobileLanding from "$lib/components/MobileLanding.svelte";
   import { browser } from "$app/environment";
+  import { preloadData } from "$app/navigation";
+  if (browser) {
+    preloadData("/playlists/1-100?order=descending");
+  }
 </script>
 
 <svelte:head>
